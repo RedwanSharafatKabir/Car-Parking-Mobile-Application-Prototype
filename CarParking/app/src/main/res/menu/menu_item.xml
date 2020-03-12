@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/homeID"
+            android:title="Home"
+            android:icon="@drawable/ic_home_black_24dp" />
+        <item
+            android:id="@+id/profileID"
+            android:title="Profile"
+            android:icon="@drawable/ic_people_black_24dp"/>
+        <item
+            android:id="@+id/findLotID"
+            android:title="Find Lot"
+            android:icon="@drawable/place"/>
+        <item
+            android:id="@+id/aboutID"
+            android:title="About"
+            android:icon="@drawable/ic_apps_black_24dp"/>
+    </group>
+
+    <item
+        android:title="Contact Us">
+        <menu>
+            <item
+                android:id="@+id/feedbackID"
+                android:title="Feedback"
+                android:icon="@drawable/ic_feedback_black_24dp"/>
+        </menu>
+    </item>
+
+</menu>

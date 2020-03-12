@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#000000"
+    tools:context=".HomeFragment">
+
+
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDD835">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/homeImageID"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/parked_car"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent=".4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/homeTextID"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/homeImageID"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent=".1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/homeImageID" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewID1"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/curve_design_background"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#FDD835"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="3dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="3dp"
+                    app:layout_constraintEnd_toEndOf="@+id/homeImageID"
+                    app:layout_constraintHeight_percent=".5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/homeTextID">
+                    <TextView
+                        android:id="@+id/welcomeHomeID"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/curve_design_background"
+                        android:gravity="center"
+                        android:text="WELCOME HOME"
+                        android:textColor="#FDD835"
+                        android:textSize="23sp"
+                        android:clickable="true"
+                        android:fontFamily="@font/idroid"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/profileID"
+                        android:layout_width="match_parent"
+                        android:layout_height="108dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:drawableTop="@drawable/ic_person_black_24dp"
+                        android:fontFamily="@font/squaresharps"
+                        android:text="Profile"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="#504F4F"
+                        android:textSize="27sp" />
+
+                    <TextView
+                        android:id="@+id/findLotID"
+                        android:layout_width="match_parent"
+                        android:layout_height="108dp"
+                        android:layout_weight="1"
+                        android:background="#F1B70B"
+                        android:clickable="true"
+                        android:drawableTop="@drawable/ic_location_on_black_24dp"
+                        android:fontFamily="@font/squaresharps"
+                        android:text="Find Lot"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="#504F4F"
+                        android:textSize="27sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="108dp"
+                        android:layout_weight="1"
+                        android:text="Settings"
+                        android:id="@+id/settingsID"
+                        android:clickable="true"
+                        android:textSize="27sp"
+                        android:textColor="#504F4F"
+                        android:background="#F1B70B"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/squaresharps"
+                        android:drawableTop="@drawable/ic_settings_black_24dp"
+                        android:textAppearance="?android:textAppearanceLarge" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="108dp"
+                        android:clickable="true"
+                        android:layout_weight="1"
+                        android:id="@+id/aboutID"
+                        android:text="About"
+                        android:textSize="27sp"
+                        android:textColor="#504F4F"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/squaresharps"
+                        android:drawableTop="@drawable/ic_dashboard_black_24dp"
+                        android:textAppearance="?android:textAppearanceLarge"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="2">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="108dp"
+                            android:text="Feedback"
+                            android:id="@+id/feedbackID"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:textSize="27sp"
+                            android:textColor="#504F4F"
+                            android:background="@android:color/transparent"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/squaresharps"
+                            android:drawableTop="@drawable/ic_insert_comment"
+                            android:textAppearance="?android:textAppearanceLarge" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="108dp"
+                            android:background="#F1B70B"
+                            android:layout_weight="1"
+                            android:text="Logout"
+                            android:id="@+id/logoutID"
+                            android:textSize="27sp"
+                            android:textColor="#504F4F"
+                            android:textAlignment="center"
+                            android:drawableTop="@drawable/logout"
+                            android:clickable="true"
+                            android:fontFamily="@font/squaresharps"
+                            android:textAppearance="?android:textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

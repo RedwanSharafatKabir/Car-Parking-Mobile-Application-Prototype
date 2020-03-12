@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Car Parking</string>
+
+    <string name="drawerOpen">drawerOpen</string>
+    <string name="drawerClose">drawerClose</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="aboutDetails">
+        Redwan Sharafat Kabir\n\nMd. Himel Junaet
+    </string>
+    <string name="ids">
+        171-15-8737\n\n171-15-8905
+    </string>
+
+    <string name="alert_title">Exit ?</string>
+    <string name="alert_message">Are you sure you want to turn off this app ?</string>
+
+</resources>

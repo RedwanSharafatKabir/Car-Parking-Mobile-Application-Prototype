@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutFragment"
+    android:background="@drawable/forza_car">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rectangle_shape_border"
+                android:padding="5dp">
+                <TextView
+                    android:id="@+id/aboutFragmentTextID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Car Parking Mobile Application"
+                    android:textSize="22dp"
+                    android:padding="7dp"
+                    android:textColor="#FDD835"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Version: 1.1"
+                    android:textSize="20dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="7dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"/>
+
+            <TextView
+                android:id="@+id/developTextID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Developed by :"
+                android:padding="5dp"
+                android:textSize="20dp"
+                android:textColor="#FDD835"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_below="@+id/developTextID"
+                android:background="#FFFFFF"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aboutDetails"
+                android:textSize="20dp"
+                android:textColor="#FDD835"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID :"
+                android:padding="2dp"
+                android:textSize="20dp"
+                android:textColor="#FDD835"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_below="@+id/developTextID"
+                android:background="#FFFFFF"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ids"
+                android:textSize="20dp"
+                android:textColor="#FDD835"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last updated: 5 - APR - 2020"
+                android:textSize="22dp"
+                android:padding="10dp"
+                android:textColor="#FDD835"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/rectangle_shape_border"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
