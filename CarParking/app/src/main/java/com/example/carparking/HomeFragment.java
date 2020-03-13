@@ -80,8 +80,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             fragmentManager.beginTransaction().replace(R.id.fragmentID, fragment).commit();
         }
         else if(v.getId()==R.id.logoutID){
-            Intent it = new Intent(getActivity(), LoginScreen.class);
-            startActivity(it);
+            getActivity().finish();
+            System.exit(0);
         }
         else if(v.getId()==R.id.welcomeHomeID){
             YoYo.with(Techniques.Tada)

@@ -38,6 +38,7 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
+                System.exit(0);
             }
         });
         alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {

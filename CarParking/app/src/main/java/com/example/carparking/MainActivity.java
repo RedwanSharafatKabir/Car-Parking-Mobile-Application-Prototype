@@ -13,17 +13,22 @@ import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        View.OnClickListener{
 
+    FloatingActionButton btn;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
@@ -34,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
+        btn = findViewById(R.id.floatingActionButtonID);
+        btn.setOnClickListener(this);
 
         drawerLayout = findViewById(R.id.drawerID);
         navigationView = findViewById(R.id.navigationViewID);
@@ -106,8 +114,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragmentID, fragment).commit();
         }
+        if(menuItem.getItemId()==R.id.floatingActionButtonID){
+            fragment = new ReserveListFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragmentID, fragment).commit();
+        }
+        if(menuItem.getItemId()==R.id.paymentID){
+            alertFunction();
+        }
 
         return false;
+    }
+
+    public void alertFunction(){
+        AlertDialog.Builder alertDialogBuilder;
+
+        alertDialogBuilder = new AlertDialog.Builder(this);
+
+        alertDialogBuilder.setTitle(R.string.reservationDetails);
+        alertDialogBuilder.setCancelable(false);
+
+        alertDialogBuilder.setNeutralButton("OKAY", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     @Override
@@ -116,14 +150,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         alertDialogBuilder = new AlertDialog.Builder(this);
 
-        alertDialogBuilder.setTitle(R.string.alert_title);
+        alertDialogBuilder.setTitle("Do you want to turn off this window ?");
         alertDialogBuilder.setIcon(R.drawable.exit);
 
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent it = new Intent(getApplicationContext(), LoginScreen.class);
-                startActivity(it);
+                finish();
+                System.exit(0);
             }
         });
         alertDialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
@@ -135,5 +169,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-////////////////////////////////////////////// Logout option ///////////////////////////////////////////////////
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.floatingActionButtonID){
+            Fragment fragment = new ReserveListFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragmentID, fragment).commit();
+        }
+    }
 }

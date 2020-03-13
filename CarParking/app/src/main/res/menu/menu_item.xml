@@ -18,6 +18,14 @@
             android:id="@+id/aboutID"
             android:title="About"
             android:icon="@drawable/ic_apps_black_24dp"/>
+        <item
+            android:id="@+id/floatingActionButtonID"
+            android:title="Reserved Lot List"
+            android:icon="@drawable/ic_book_black_24dp"/>
+        <item
+            android:id="@+id/paymentID"
+            android:title="Payment Due"
+            android:icon="@drawable/ic_payment_black_24dp"/>
     </group>
 
     <item

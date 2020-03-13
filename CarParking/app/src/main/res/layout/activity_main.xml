@@ -47,11 +47,7 @@
             tools:openDrawer="start"
             android:id="@+id/drawerID"
             android:fitsSystemWindows="true">
-<!--            <FrameLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:id="@+id/fragmentID">-->
-<!--            </FrameLayout>-->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -59,7 +55,18 @@
                     android:id="@+id/fragmentID"
                     android:name="com.example.carparking.HomeFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent">
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/floatingActionButtonID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|bottom"
+                        android:layout_margin="16dp"
+                        android:backgroundTint="@color/c3"
+                        app:fabSize="normal"
+                        app:elevation="6dp"
+                        android:src="@drawable/ic_recent_actors_black_24dp"/>
+                </fragment>
             </LinearLayout>
 
             <com.google.android.material.navigation.NavigationView
@@ -74,6 +81,5 @@
                 app:itemTextAppearance="@style/menu_text_style" />
 
         </androidx.drawerlayout.widget.DrawerLayout>
-
     </LinearLayout>
 </LinearLayout>
