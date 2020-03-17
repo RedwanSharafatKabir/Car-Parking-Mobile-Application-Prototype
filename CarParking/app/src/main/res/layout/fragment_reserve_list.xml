@@ -31,22 +31,17 @@
                 android:layout_height="1dp"
                 android:background="#000000"
                 android:layout_gravity="center"
-                android:layout_marginBottom="30dp"/>
+                android:layout_marginBottom="50dp"/>
             <ListView
                 android:id="@+id/reserveListViewID"
                 android:layout_width="350dp"
                 android:layout_height="550dp"
-                android:paddingTop="20dp"
                 android:layout_gravity="center"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:divider="#6F36B99A"
+                android:dividerHeight="1dp"
+                android:listSelector="#6F36B99A"/>
 
-            <TextView
-                android:id="@+id/outputSampleID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

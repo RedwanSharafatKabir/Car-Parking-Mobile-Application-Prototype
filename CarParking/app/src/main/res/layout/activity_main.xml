@@ -28,7 +28,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Car Parking Application"
+                    android:text="Park My Car"
                     android:layout_toRightOf="@+id/toolBarID"
                     android:layout_alignBaseline="@id/toolBarID"
                     android:textSize="17sp"
@@ -47,28 +47,26 @@
             tools:openDrawer="start"
             android:id="@+id/drawerID"
             android:fitsSystemWindows="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <fragment
-                    android:id="@+id/fragmentID"
-                    android:name="com.example.carparking.HomeFragment"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/floatingActionButtonID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end|bottom"
-                        android:layout_margin="16dp"
-                        android:backgroundTint="@color/c3"
-                        app:fabSize="normal"
-                        app:elevation="6dp"
-                        android:src="@drawable/ic_recent_actors_black_24dp"/>
-                </fragment>
-            </LinearLayout>
-
+                    <fragment
+                        android:id="@+id/fragmentID"
+                        android:name="com.example.carparking.HomeFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/floatingActionButtonID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|bottom"
+                            android:layout_margin="16dp"
+                            android:backgroundTint="@color/c3"
+                            app:fabSize="normal"
+                            app:elevation="6dp"
+                            android:src="@drawable/ic_recent_actors_black_24dp"/>
+                    </fragment>
+                </LinearLayout>
             <com.google.android.material.navigation.NavigationView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

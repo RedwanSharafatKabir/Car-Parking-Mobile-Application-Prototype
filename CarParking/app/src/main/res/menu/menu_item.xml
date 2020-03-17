@@ -24,7 +24,7 @@
             android:icon="@drawable/ic_book_black_24dp"/>
         <item
             android:id="@+id/paymentID"
-            android:title="Payment Due"
+            android:title="Payment Details"
             android:icon="@drawable/ic_payment_black_24dp"/>
     </group>
 

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class ReserveListFragment extends Fragment implements AdapterView.OnItemClickListener{
 
-    TextView textView, sample;
+    TextView textView;
     ImageView close, bkash, dbbl;
     Dialog dialog;
     ListView listview;
@@ -35,7 +35,6 @@ public class ReserveListFragment extends Fragment implements AdapterView.OnItemC
         listview.setAdapter(adpt);
         listview.setOnItemClickListener(this);
         dialog = new Dialog(getActivity());
-        sample = (TextView) v.findViewById(R.id.outputSampleID);
 
 //        Bundle bundle = getArguments();
 //        String first_key = bundle.getString("Key1");

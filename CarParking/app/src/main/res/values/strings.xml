@@ -23,5 +23,6 @@
     </string-array>
 
     <string name="reservationDetails">Go to your reservation list and select an item to see your payment details.</string>
+    <string name="pass_warn">Password is too short\nPassword must contain minimum 8 characters</string>
 
 </resources>

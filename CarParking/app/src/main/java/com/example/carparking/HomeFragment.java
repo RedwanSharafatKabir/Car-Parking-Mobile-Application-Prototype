@@ -19,12 +19,14 @@ import androidx.core.view.ViewCompat;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     TextView profile, about, settings, feedback, btn1, logout, welcome;
+    FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         feedback.setOnClickListener(this);
         logout.setOnClickListener(this);
         welcome.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
 
         return v;
     }
@@ -80,8 +84,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             fragmentManager.beginTransaction().replace(R.id.fragmentID, fragment).commit();
         }
         else if(v.getId()==R.id.logoutID){
-            getActivity().finish();
-            System.exit(0);
+            shutDownFunction();
         }
         else if(v.getId()==R.id.welcomeHomeID){
             YoYo.with(Techniques.Tada)
@@ -109,5 +112,33 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     .repeat(1)
                     .playOn(logout);
         }
+    }
+
+    public void shutDownFunction() {
+        AlertDialog.Builder alertDialogBuilder;
+
+        alertDialogBuilder = new AlertDialog.Builder(getActivity());
+
+        alertDialogBuilder.setTitle("Do you want to leave this app ?");
+        alertDialogBuilder.setCancelable(true);
+
+        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                FirebaseAuth.getInstance().signOut();
+                getActivity().finish();
+
+                Intent it = new Intent(getActivity(), LoginScreen.class);
+                startActivity(it);
+            }
+        });
+        alertDialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

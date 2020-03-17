@@ -1,13 +1,10 @@
 package com.example.carparking;
 
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.util.Patterns;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,65 +12,94 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
-import cc.cloudist.acplibrary.ACProgressConstant;
-import cc.cloudist.acplibrary.ACProgressFlower;
+import java.util.concurrent.Executor;
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
 
-    Button signupPage;
+    Button signupPage, forgetPassButton;
     ImageButton signin;
     EditText usernameEmail, password;
+    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_login, container, false);
+        mAuth = FirebaseAuth.getInstance();
+
+        usernameEmail = (EditText) v.findViewById(R.id.loginEmailID);
+        password = (EditText) v.findViewById(R.id.loginpassID);
+
+        signupPage = (Button) v.findViewById(R.id.signupPageID);
+        signupPage.setOnClickListener(this);
 
         signin = (ImageButton) v.findViewById(R.id.SigninID);
         signin.setOnClickListener(this);
-        usernameEmail = (EditText) v.findViewById(R.id.loginEmailID);
-        password = (EditText) v.findViewById(R.id.loginpassID);
-        signupPage = (Button) v.findViewById(R.id.signupPageID);
-        signupPage.setOnClickListener(this);
+
+        forgetPassButton = (Button) v.findViewById(R.id.forgetPassID);
+        forgetPassButton.setOnClickListener(this);
 
         return v;
     }
     @Override
     public void onClick(View v) {
-        String email = usernameEmail.getText().toString();
-        String pass = password.getText().toString();
+        String emailobj = usernameEmail.getText().toString();
+        String passobj = password.getText().toString();
 
-        if(v.getId()==R.id.SigninID){
-//            if (email.isEmpty()) {
-//                usernameEmail.setError("Fill up all required fields");
-//                usernameEmail.setText("");
-//            }
-//            if(pass.isEmpty()){
-//                password.setError("Fill up all required fields");
-//                password.setText("");
-//            }
-//            else {
-                usernameEmail.setText("");
-                password.setText("");
-
-                ACProgressFlower dialog = new ACProgressFlower.Builder(getActivity())
-                        .direction(ACProgressConstant.DIRECT_CLOCKWISE)
-                        .themeColor(Color.WHITE)
-                        .text("Loading...").build();
-                dialog.show();
-
-                Intent it = new Intent(getActivity(), MainActivity.class);
-                startActivity(it);
-//            }
-        }
         if(v.getId()==R.id.signupPageID){
             Fragment fragment = new SignupFragment();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.loginSignupFragmentID, fragment).commit();
+        }
+
+        if(v.getId()==R.id.SigninID){
+            if (emailobj.isEmpty()) {
+                usernameEmail.setError("Fill up all required fields");
+                usernameEmail.setText("");
+            }
+            if(passobj.isEmpty()){
+                password.setError("Fill up all required fields");
+                password.setText("");
+            }
+            if(!Patterns.EMAIL_ADDRESS.matcher(emailobj).matches()) {
+                Toast t = Toast.makeText(getActivity(), "Invalid email address", Toast.LENGTH_LONG);
+                t.setGravity(Gravity.CENTER, 0, 0);
+                t.show();
+                usernameEmail.requestFocus();
+                return;
+            }
+
+            mAuth.signInWithEmailAndPassword(emailobj, passobj).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast toast = Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+
+                        getActivity().finish();
+
+                        Intent it = new Intent(getActivity(), MainActivity.class);
+                        startActivity(it);
+
+                        usernameEmail.setText("");
+                        password.setText("");
+                    }
+                    else {
+                        Toast t = Toast.makeText(getActivity(), "Authentication failed\nError : " +
+                                task.getException().getMessage(), Toast.LENGTH_LONG);
+                        t.setGravity(Gravity.CENTER, 0, 0);
+                        t.show();
+                    }
+                }
+            });
         }
     }
 }

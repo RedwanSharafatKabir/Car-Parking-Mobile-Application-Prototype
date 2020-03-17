@@ -13,13 +13,10 @@ import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         toolbar = findViewById(R.id.toolBarID);
         setSupportActionBar(toolbar);
-        toolbar.inflateMenu(R.menu.logout_menu_bar);
+        toolbar.inflateMenu(R.menu.settings_menu_bar);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 toolbar, R.string.drawerOpen, R.string.drawerClose);
@@ -64,15 +61,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.logout_menu_bar, menu);
+        getMenuInflater().inflate(R.menu.settings_menu_bar, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.logoutID){
-            Toast.makeText(this, "Log out", Toast.LENGTH_SHORT).show();
-        }
         if(item.getItemId()==R.id.settingsID){
             Fragment fragment = new SettingsFragment();
             FragmentManager fragmentManager = getFragmentManager();
@@ -157,7 +151,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
-                System.exit(0);
+                Intent it = new Intent(MainActivity.this, LoginScreen.class);
+                startActivity(it);
             }
         });
         alertDialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
