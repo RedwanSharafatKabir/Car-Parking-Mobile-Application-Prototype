@@ -1,5 +1,6 @@
 package com.example.carparking;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -10,9 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-
+import android.app.FragmentTransaction;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
@@ -37,51 +38,60 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     CustomAdapter customAdapter;
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
-    String userInfo = "User Information Table", Email;
+    FirebaseDatabase firebaseDatabase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        Intent intent = getActivity().getIntent();
-        Email = intent.getStringExtra("Email");
 
         youareawesome = v.findViewById(R.id.youAwesomeButtonID);
         youareawesome.setOnClickListener(this);
 
         nameTextview = v.findViewById(R.id.usernameBelowProfilePicID);
         emailTextview = v.findViewById(R.id.emailBelowProfilePicID);
-
+        
 //        listView = v.findViewById(R.id.userProfileListID);
 //        userInfoList = new ArrayList<>();
 //        customAdapter = new CustomAdapter(getActivity(), userInfoList);
-
-        databaseReference = FirebaseDatabase.getInstance().getReference(userInfo);
 
         return v;
     }
 
     @Override
     public void onStart() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        mAuth = FirebaseAuth.getInstance();
 
-//                userInfoList.clear();
-                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
-                    if(dataSnapshot1.child("email").getValue().equals(Email)){
-                        nameTextview.setText(dataSnapshot1.child("username").getValue(String.class));
-                        emailTextview.setText(Email);
-                    }
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user!=null){
+            if(user.getDisplayName()!=null) {
+                nameTextview.setText(user.getDisplayName());
+            }
+            if(user.getEmail()!=null){
+                emailTextview.setText(user.getEmail());
+            }
+        }
+
+//        firebaseDatabase = FirebaseDatabase.getInstance();
+//
+////        databaseReference = firebaseDatabase.getReference().child("redwan");
+//        databaseReference = firebaseDatabase.getReference();
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+//                    String Username = dataSnapshot1.child("username").getValue(String.class);
+//
+//                    nameTextview.setText(dataSnapshot.child(Username).child("username").getValue(String.class));
+//                    emailTextview.setText(dataSnapshot.child(Username).child("email").getValue(String.class));
+//                }
 //                    StoreData storeData = dataSnapshot1.getValue(StoreData.class);
 //                    userInfoList.add(storeData);
-                }
-//                listView.setAdapter(customAdapter);
-            }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {}
+//        });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
-        });
         super.onStart();
     }
 

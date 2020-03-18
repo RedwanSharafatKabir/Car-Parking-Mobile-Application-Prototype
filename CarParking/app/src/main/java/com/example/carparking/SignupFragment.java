@@ -1,10 +1,12 @@
 package com.example.carparking;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.provider.ContactsContract;
 import android.util.Patterns;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,6 +26,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -54,7 +58,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
         confirmpass = (EditText) v.findViewById(R.id.confirmPasswordID);
 
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("User Information Table");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         return v;
     }
@@ -154,7 +158,21 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
     }
 
     public void storeUserData(String Email, String Username){
-        String Key_User_Info = databaseReference.push().getKey();
+
+        String displayname = Username;
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user!=null){
+            UserProfileChangeRequest profile;
+            profile= new UserProfileChangeRequest.Builder().setDisplayName(displayname).build();
+
+            user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {}
+            });
+        }
+
+//        String Key_User_Info = databaseReference.push().getKey();
+        String Key_User_Info = Username;
 
         StoreData storeData = new StoreData(Email, Username);
         databaseReference.child(Key_User_Info).setValue(storeData);
