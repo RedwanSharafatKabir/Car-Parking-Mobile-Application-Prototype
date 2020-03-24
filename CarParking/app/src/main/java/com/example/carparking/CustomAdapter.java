@@ -14,15 +14,15 @@ import com.google.firebase.database.core.Context;
 
 import java.util.List;
 
-public class CustomAdapter extends ArrayAdapter<StoreData> {
+public class CustomAdapter extends ArrayAdapter<StoreReservedData> {
 
     Activity context;
-    List<StoreData> userInfoList;
+    List<StoreReservedData> userLotList;
 
-    public CustomAdapter(Activity context, List<StoreData> userInfoList) {
-        super(context, R.layout.sample_layout, userInfoList);
+    public CustomAdapter(Activity context, List<StoreReservedData> userLotList) {
+        super(context, R.layout.array_adapter, userLotList);
         this.context = context;
-        this.userInfoList = userInfoList;
+        this.userLotList = userLotList;
     }
 
     @NonNull
@@ -30,15 +30,13 @@ public class CustomAdapter extends ArrayAdapter<StoreData> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater layoutInflater = context.getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.sample_layout, null, true);
+        View view = layoutInflater.inflate(R.layout.array_adapter, null, true);
 
-        StoreData storeData = userInfoList.get(position);
+        StoreReservedData storeReservedData = userLotList.get(position);
 
-        TextView Username = view.findViewById(R.id.usernameBelowProfilePicID);
-        TextView Email = view.findViewById(R.id.emailBelowProfilePicID);
+        TextView textView = view.findViewById(R.id.parking_lot_ID1);
 
-//        Username.setText(" Name: " + storeData.getUsername());
-//        Email.setText(" Email: " + storeData.getEmail());
+        textView.setText(storeReservedData.getMarkertitle());
 
         return view;
     }

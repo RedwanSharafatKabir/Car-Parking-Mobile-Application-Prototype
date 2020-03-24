@@ -42,7 +42,7 @@
                     android:id="@+id/cardViewID1"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="60dp"
                     android:background="@drawable/curve_design_background"
                     android:clickable="true"
                     app:cardBackgroundColor="#FDD835"
@@ -87,7 +87,7 @@
                     <TextView
                         android:id="@+id/profileID"
                         android:layout_width="match_parent"
-                        android:layout_height="108dp"
+                        android:layout_height="120dp"
                         android:layout_weight="1"
                         android:clickable="true"
                         android:drawableTop="@drawable/ic_person_black_24dp"
@@ -101,7 +101,7 @@
                     <TextView
                         android:id="@+id/findLotID"
                         android:layout_width="match_parent"
-                        android:layout_height="108dp"
+                        android:layout_height="120dp"
                         android:layout_weight="1"
                         android:background="#F1B70B"
                         android:clickable="true"
@@ -122,7 +122,7 @@
                     android:weightSum="2">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="108dp"
+                        android:layout_height="120dp"
                         android:layout_weight="1"
                         android:text="Settings"
                         android:id="@+id/settingsID"
@@ -136,7 +136,7 @@
                         android:textAppearance="?android:textAppearanceLarge" />
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="108dp"
+                        android:layout_height="120dp"
                         android:clickable="true"
                         android:layout_weight="1"
                         android:id="@+id/aboutID"
@@ -157,7 +157,7 @@
                     android:weightSum="2">
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="108dp"
+                            android:layout_height="120dp"
                             android:text="Feedback"
                             android:id="@+id/feedbackID"
                             android:layout_weight="1"
@@ -171,7 +171,7 @@
                             android:textAppearance="?android:textAppearanceLarge" />
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="108dp"
+                            android:layout_height="120dp"
                             android:background="#F1B70B"
                             android:layout_weight="1"
                             android:text="Logout"

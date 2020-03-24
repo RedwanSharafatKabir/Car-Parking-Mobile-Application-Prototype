@@ -34,13 +34,15 @@
                 android:layout_marginBottom="50dp"/>
             <ListView
                 android:id="@+id/reserveListViewID"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="550dp"
                 android:layout_gravity="center"
                 android:textAlignment="center"
-                android:divider="#6F36B99A"
-                android:dividerHeight="1dp"
-                android:listSelector="#6F36B99A"/>
+                android:divider="@android:color/transparent"
+                android:dividerHeight="8dp"
+                android:listSelector="@android:color/transparent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
 
         </LinearLayout>
     </ScrollView>

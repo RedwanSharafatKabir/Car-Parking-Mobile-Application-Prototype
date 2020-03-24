@@ -37,86 +37,76 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/homeImageID" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profilePicID"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/bkash"
-                    android:clickable="true"
-                    android:layout_marginTop="45dp"
-                    app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true"
-                    app:contentPadding="3dp"
-                    app:layout_constraintEnd_toEndOf="@+id/homeImageID"
-                    app:layout_constraintHeight_percent=".5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/homeTextID"
-                    android:foregroundGravity="center"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePicID"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
+                android:src="@drawable/camera"
+                android:clickable="true"
+                android:layout_marginTop="45dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="3dp"
+                app:layout_constraintEnd_toEndOf="@+id/homeImageID"
+                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeTextID"
+                android:foregroundGravity="center"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingBottom="30dp"
+                android:paddingTop="30dp"
+                app:layout_constraintEnd_toEndOf="@+id/homeImageID"
+                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilePicID">
+
+                <TextView
+                    android:id="@+id/usernameBelowProfilePicID"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="center"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:textAlignment="center"
+                    android:typeface="serif"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                <TextView
+                    android:id="@+id/emailBelowProfilePicID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:textAlignment="center"
+                    android:typeface="serif"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Button
+                    android:id="@+id/youAwesomeButtonID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/youawesomebutton"
+                    android:text="You are awesome  "
+                    android:textColor="#FFFFFF"
+                    android:textSize="23dp"
+                    android:textAllCaps="false"
+                    android:textAlignment="center"
                     android:gravity="center"
-                    android:paddingBottom="30dp"
-                    android:paddingTop="30dp"
-                    app:layout_constraintEnd_toEndOf="@+id/homeImageID"
-                    app:layout_constraintHeight_percent=".5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profilePicID">
-
-                    <ListView
-                        android:id="@+id/userProfileListID"
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:dividerHeight="1dp"/>
-
-                    <TextView
-                        android:id="@+id/usernameBelowProfilePicID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="25sp"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:typeface="serif"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:drawableLeft="@drawable/one_person_username"/>
-                    <TextView
-                        android:id="@+id/emailBelowProfilePicID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="25sp"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:typeface="serif"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:drawableLeft="@drawable/ic_email_black_24dp" />
-
-                    <Button
-                        android:id="@+id/youAwesomeButtonID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/youawesomebutton"
-                        android:text="You are awesome  "
-                        android:textColor="#FFFFFF"
-                        android:textSize="23dp"
-                        android:textAllCaps="false"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:paddingTop="7dp"
-                        android:paddingBottom="7dp"
-                        android:layout_marginTop="20dp"
-                        android:drawableRight="@drawable/you_are_awesome"/>
-                </LinearLayout>
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_marginTop="20dp"
+                    android:drawableRight="@drawable/you_are_awesome"/>
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </FrameLayout>

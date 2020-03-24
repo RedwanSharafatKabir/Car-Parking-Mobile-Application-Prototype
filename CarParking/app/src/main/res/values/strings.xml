@@ -16,12 +16,6 @@
     <string name="alert_title">Exit ?</string>
     <string name="alert_message">Are you sure you want to turn off this app ?</string>
 
-    <string-array name="parking_lot_array">
-        <item>Mugda Hospital</item>
-        <item>Mugdapara BTCL Office</item>
-        <item>Dhanmondi</item>
-    </string-array>
-
     <string name="reservationDetails">Go to your reservation list and select an item to see your payment details.</string>
     <string name="pass_warn">Password is too short\nPassword must contain minimum 8 characters</string>
 
