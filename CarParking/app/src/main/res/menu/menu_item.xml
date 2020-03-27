@@ -20,7 +20,7 @@
             android:icon="@drawable/ic_apps_black_24dp"/>
         <item
             android:id="@+id/floatingActionButtonID"
-            android:title="Reserved Lot List"
+            android:title="Reserved Lot Details"
             android:icon="@drawable/ic_book_black_24dp"/>
         <item
             android:id="@+id/paymentID"

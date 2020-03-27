@@ -7,16 +7,16 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="aboutDetails">
-        Redwan Sharafat Kabir\n\nMd. Himel Junaet
+        Redwan Sharafat Kabir\n\n
     </string>
     <string name="ids">
-        171-15-8737\n\n171-15-8905
+        171-15-8737\n\n
     </string>
 
     <string name="alert_title">Exit ?</string>
     <string name="alert_message">Are you sure you want to turn off this app ?</string>
 
-    <string name="reservationDetails">Go to your reservation list and select an item to see your payment details.</string>
+    <string name="reservationDetails">Go to your reservation details to see your payment details.</string>
     <string name="pass_warn">Password is too short\nPassword must contain minimum 8 characters</string>
 
 </resources>

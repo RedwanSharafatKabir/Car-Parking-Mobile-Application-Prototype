@@ -90,11 +90,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             YoYo.with(Techniques.Tada)
                     .duration(700)
                     .repeat(1)
-                    .playOn(nameTextview);
-            YoYo.with(Techniques.Tada)
-                    .duration(700)
-                    .repeat(1)
-                    .playOn(emailTextview);
+                    .playOn(circleImageView);
         }
     }
 
@@ -115,16 +111,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             Picasso.with(getActivity()).load(uriProfileImage).into(circleImageView);
 
             uploadImageToFirebase();
-//            try {
-//                Bitmap bitmap = MediaStore.Images.Media
-//                        .getBitmap(getContext().getContentResolver(), uriProfileImage);
-//
-//                circleImageView.setImageBitmap(bitmap);
-//                uploadImageToFirebase();
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
         }
     }
 

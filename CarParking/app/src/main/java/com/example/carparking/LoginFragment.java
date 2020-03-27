@@ -19,9 +19,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.Executor;
+
+import io.paperdb.Paper;
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
 
@@ -51,7 +57,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     }
     @Override
     public void onClick(View v) {
-        String emailobj = usernameEmail.getText().toString();
+        final String emailobj = usernameEmail.getText().toString();
         String passobj = password.getText().toString();
 
         if(v.getId()==R.id.signupPageID){

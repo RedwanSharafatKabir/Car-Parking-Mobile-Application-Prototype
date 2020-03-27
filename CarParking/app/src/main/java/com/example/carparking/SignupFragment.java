@@ -58,7 +58,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
         confirmpass = (EditText) v.findViewById(R.id.confirmPasswordID);
 
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference("User Information");
 
         return v;
     }

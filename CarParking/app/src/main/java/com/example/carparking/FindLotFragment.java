@@ -1,26 +1,21 @@
 package com.example.carparking;
 
 import android.app.AlertDialog;
-import android.app.FragmentManager;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import android.app.FragmentTransaction;
-
-import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -37,12 +32,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class FindLotFragment extends Fragment implements OnMapReadyCallback {
 
+    String username;
     int j = 0;
     private GoogleMap mGoogleMap;
     ArrayList<LatLng> placelist = new ArrayList<LatLng>();
@@ -55,7 +49,6 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback {
     String mugdaparaBTCLoffice = "Mugdapara BTCL Office";
     String dhanmondi_shukrabaad = "DIU Parking Lot";
 
-    FirebaseAuth mAuth;
     DatabaseReference databaseReference;
     String Username;
 
@@ -75,21 +68,10 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback {
         title.add(mugdaparaBTCLoffice);
         title.add(dhanmondi_shukrabaad);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Reserved List");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Reserved List");
 
         return v;
     }
-
-//    @Override
-//    public void onStart() {
-//        FirebaseUser user = mAuth.getCurrentUser();
-//        if(user!=null){
-//            if(user.getDisplayName()!=null) {
-//                Username = user.getDisplayName();
-//            }
-//        }
-//        super.onStart();
-//    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -153,20 +135,16 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback {
     }
 
     public void StoreReservedListData(String markertitle){
-//        String markername = markertitle;
-//        FirebaseUser lotlist = mAuth.getCurrentUser();
-//        if(lotlist!=null){
-//            UserProfileChangeRequest profile;
-//            profile= new UserProfileChangeRequest.Builder().setDisplayName(markername).build();
-//            lotlist.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                @Override
-//                public void onComplete(@NonNull Task<Void> task) {}
-//            });
-//        }
-        String Key_User_Info = databaseReference.push().getKey();
-//        String Key_User_Info = Username;
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user!=null){
+            if(user.getDisplayName()!=null) {
+                username = user.getDisplayName();
+            }
+        }
+
+        String Key_User_Info = username;
         StoreReservedData storeReservedData = new StoreReservedData(markertitle);
         databaseReference.child(Key_User_Info).setValue(storeReservedData);
-//        databaseReference.setValue(storeReservedData);
     }
 }

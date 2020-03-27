@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class StoreData {
+
     String Email;
     String Username;
 
