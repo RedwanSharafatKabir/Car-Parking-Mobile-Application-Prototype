@@ -32,7 +32,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.SimpleTimeZone;
 
 public class FindLotFragment extends Fragment implements OnMapReadyCallback {
 
@@ -120,7 +126,18 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback {
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                StoreReservedListData(markertitle);
+                final String saveCurrentDate, saveCurrentTime, countHours, countMinutes;
+                Calendar c = Calendar.getInstance();
+                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+                saveCurrentDate = currentDate.format(c.getTime());
+                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+                saveCurrentTime = currentTime.format(c.getTime());
+                SimpleDateFormat hour = new SimpleDateFormat("HH");
+                countHours = hour.format(c.getTime());
+                SimpleDateFormat minute = new SimpleDateFormat("mm");
+                countMinutes = minute.format(c.getTime());
+
+                StoreReservedListData(markertitle, saveCurrentDate, saveCurrentTime, countHours, countMinutes);
                 Toast.makeText(getActivity(), "Added to your reserve list", Toast.LENGTH_LONG).show();
             }
         });
@@ -134,7 +151,8 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback {
         alertDialog.show();
     }
 
-    public void StoreReservedListData(String markertitle){
+    public void StoreReservedListData(String markertitle, String saveCurrentDate,
+                                      String saveCurrentTime, String countHours, String countMinutes){
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user!=null){
@@ -144,7 +162,8 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback {
         }
 
         String Key_User_Info = username;
-        StoreReservedData storeReservedData = new StoreReservedData(markertitle);
+        StoreReservedData storeReservedData;
+        storeReservedData = new StoreReservedData(markertitle, saveCurrentDate, saveCurrentTime, countHours, countMinutes);
         databaseReference.child(Key_User_Info).setValue(storeReservedData);
     }
 }
