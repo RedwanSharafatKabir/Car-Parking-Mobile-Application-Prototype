@@ -44,9 +44,7 @@ public class ReserveListFragment extends Fragment {
         reservationText2 = v.findViewById(R.id.reservationTimeID2);
         totalReservedText = v.findViewById(R.id.totalReservedTimeID);
 
-        if(reservationText1.equals("")){
-            totalReservedText.setText("");
-        }
+        showDetail();
 
         bkash.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,14 +70,6 @@ public class ReserveListFragment extends Fragment {
                                 saveCurrentTime, countHours, countMinutes);
                         databaseReference.child(Key_User_Info).setValue(storeReservedData);
 //                        DatabaseReference deleteRef1 = databaseReference.child(username).child("saveCurrentDate");
-//                        DatabaseReference deleteRef2 = databaseReference.child(username).child("saveCurrentTime");
-//                        DatabaseReference deleteRef3 = databaseReference.child(username).child("countHours");
-//                        DatabaseReference deleteRef4 = databaseReference.child(username).child("countMinutes");
-//                        DatabaseReference deleteRef5 = databaseReference.child(username).child("markertitle");
-//                        deleteRef1.removeValue();
-//                        deleteRef2.removeValue();
-//                        deleteRef3.removeValue();
-//                        deleteRef4.removeValue();
 //                        deleteRef5.removeValue();
                     }
                 }
@@ -113,14 +103,6 @@ public class ReserveListFragment extends Fragment {
                                 saveCurrentTime, countHours, countMinutes);
                         databaseReference.child(Key_User_Info).setValue(storeReservedData);
 //                        DatabaseReference deleteRef1 = databaseReference.child(username).child("saveCurrentDate");
-//                        DatabaseReference deleteRef2 = databaseReference.child(username).child("saveCurrentTime");
-//                        DatabaseReference deleteRef3 = databaseReference.child(username).child("countHours");
-//                        DatabaseReference deleteRef4 = databaseReference.child(username).child("countMinutes");
-//                        DatabaseReference deleteRef5 = databaseReference.child(username).child("markertitle");
-//                        deleteRef1.removeValue();
-//                        deleteRef2.removeValue();
-//                        deleteRef3.removeValue();
-//                        deleteRef4.removeValue();
 //                        deleteRef5.removeValue();
                     }
                 }
@@ -133,8 +115,9 @@ public class ReserveListFragment extends Fragment {
         return v;
     }
 
-    @Override
-    public void onStart() {
+//    @Override
+//    public void onStart() {
+    public void showDetail() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user!=null){
             if(user.getDisplayName()!=null) {
@@ -222,6 +205,6 @@ public class ReserveListFragment extends Fragment {
                 });
             }
         }
-        super.onStart();
+//        super.onStart();
     }
 }

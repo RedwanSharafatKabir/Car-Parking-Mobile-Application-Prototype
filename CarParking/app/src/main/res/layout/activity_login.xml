@@ -9,8 +9,59 @@
     android:orientation="vertical"
     tools:context=".LoginScreen">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/transparent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/BatteryPercentageToolBarID"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:outlineAmbientShadowColor="#000000"
+            android:outlineSpotShadowColor="#000000"
+            android:theme="@style/Animation.Design.BottomSheetDialog">
+            <TextView
+                android:id="@+id/batteryStatusOutputID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/BatteryPercentageToolBarID"
+                android:layout_gravity="right"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/BatteryPercentageToolBarID"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:drawableLeft="@drawable/ic_battery_charging_full_black_24dp"/>
+            <ImageView
+                android:id="@+id/wifiStatusOutputID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/BatteryPercentageToolBarID"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/BatteryPercentageToolBarID"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="17sp"/>
+            <ImageView
+                android:id="@+id/dataStatusOutputID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/BatteryPercentageToolBarID"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/BatteryPercentageToolBarID"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="17sp"/>
+        </androidx.appcompat.widget.Toolbar>
+    </LinearLayout>
+
     <ImageView
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_marginLeft="50dp"
