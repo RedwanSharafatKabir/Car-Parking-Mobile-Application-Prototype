@@ -22,14 +22,20 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="fullSensor">
+        </activity>
+
+        <activity
+            android:name=".LoginScreen"
+            android:screenOrientation="fullSensor">
             <intent-filter>
-                <action android:name="com.example.carparking.MainActivity" />
+                <action android:name="com.example.carparking.LoginScreen" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".LoginScreen"
+            android:name=".HomeScreen"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
