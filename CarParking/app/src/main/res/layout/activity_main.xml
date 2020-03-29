@@ -22,8 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:outlineAmbientShadowColor="#000000"
-                android:outlineSpotShadowColor="#000000"
-                android:theme="@style/Animation.Design.BottomSheetDialog">
+                android:outlineSpotShadowColor="#000000">
                 <TextView
                     android:id="@+id/batteryStatusOutputID"
                     android:layout_width="wrap_content"

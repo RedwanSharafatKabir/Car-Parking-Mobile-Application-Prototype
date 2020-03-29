@@ -22,20 +22,15 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="fullSensor">
-        </activity>
-
-        <activity
-            android:name=".LoginScreen"
-            android:screenOrientation="fullSensor">
             <intent-filter>
-                <action android:name="com.example.carparking.LoginScreen" />
+                <action android:name="com.example.carparking.MainActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".HomeScreen"
+            android:name=".LoginScreen"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

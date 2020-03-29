@@ -4,20 +4,15 @@ public class StoreReservedData {
     String markertitle;
     String saveCurrentDate;
     String saveCurrentTime;
-    String countHours;
-    String countMinutes;
 
     public StoreReservedData(){
 
     }
 
-    public StoreReservedData(String markertitle, String saveCurrentDate,
-                             String saveCurrentTime, String countHours, String countMinutes) {
+    public StoreReservedData(String markertitle, String saveCurrentDate, String saveCurrentTime) {
         this.markertitle = markertitle;
         this.saveCurrentDate = saveCurrentDate;
         this.saveCurrentTime = saveCurrentTime;
-        this.countHours = countHours;
-        this.countMinutes = countMinutes;
     }
 
     public String getMarkertitle() {
@@ -42,21 +37,5 @@ public class StoreReservedData {
 
     public void setSaveCurrentTime(String saveCurrentTime) {
         this.saveCurrentTime = saveCurrentTime;
-    }
-
-    public String getCountHours() {
-        return countHours;
-    }
-
-    public void setCountHours(String countHours) {
-        this.countHours = countHours;
-    }
-
-    public String getCountMinutes() {
-        return countMinutes;
-    }
-
-    public void setCountMinutes(String countMinutes) {
-        this.countMinutes = countMinutes;
     }
 }

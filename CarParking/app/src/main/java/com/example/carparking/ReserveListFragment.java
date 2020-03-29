@@ -24,10 +24,10 @@ import java.util.Date;
 
 public class ReserveListFragment extends Fragment {
 
-    TextView textView, reservationText1, reservationText2, totalReservedText;
+    TextView textView, reservationText1, reservationText2;
     ImageView bkash, dbbl;
     DatabaseReference databaseReference;
-    String username, markertitle,  saveCurrentDate, saveCurrentTime, countHours, countMinutes;;
+    String username, markertitle,  saveCurrentDate, saveCurrentTime;
     int totalHour, totalMinute;
 
     @Override
@@ -42,9 +42,6 @@ public class ReserveListFragment extends Fragment {
         textView = v.findViewById(R.id.parking_lot_ID1);
         reservationText1 = v.findViewById(R.id.reservationTimeID1);
         reservationText2 = v.findViewById(R.id.reservationTimeID2);
-        totalReservedText = v.findViewById(R.id.totalReservedTimeID);
-
-        showDetail();
 
         bkash.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,17 +54,10 @@ public class ReserveListFragment extends Fragment {
                         markertitle="";
                         saveCurrentDate="";
                         saveCurrentTime="";
-                        Calendar c = Calendar.getInstance();
-                        Calendar c2 = Calendar.getInstance();
-                        SimpleDateFormat hour2 = new SimpleDateFormat("HH");
-                        countHours = hour2.format(c.getTime());
-                        SimpleDateFormat minute2 = new SimpleDateFormat("mm");
-                        countMinutes = minute2.format(c2.getTime());
 
                         String Key_User_Info = username;
                         StoreReservedData storeReservedData;
-                        storeReservedData = new StoreReservedData(markertitle, saveCurrentDate,
-                                saveCurrentTime, countHours, countMinutes);
+                        storeReservedData = new StoreReservedData(markertitle, saveCurrentDate, saveCurrentTime);
                         databaseReference.child(Key_User_Info).setValue(storeReservedData);
 //                        DatabaseReference deleteRef1 = databaseReference.child(username).child("saveCurrentDate");
 //                        deleteRef5.removeValue();
@@ -90,17 +80,10 @@ public class ReserveListFragment extends Fragment {
                         markertitle="";
                         saveCurrentDate="";
                         saveCurrentTime="";
-                        Calendar c = Calendar.getInstance();
-                        Calendar c2 = Calendar.getInstance();
-                        SimpleDateFormat hour2 = new SimpleDateFormat("HH");
-                        countHours = hour2.format(c.getTime());
-                        SimpleDateFormat minute2 = new SimpleDateFormat("mm");
-                        countMinutes = minute2.format(c2.getTime());
 
                         String Key_User_Info = username;
                         StoreReservedData storeReservedData;
-                        storeReservedData = new StoreReservedData(markertitle, saveCurrentDate,
-                                saveCurrentTime, countHours, countMinutes);
+                        storeReservedData = new StoreReservedData(markertitle, saveCurrentDate, saveCurrentTime);
                         databaseReference.child(Key_User_Info).setValue(storeReservedData);
 //                        DatabaseReference deleteRef1 = databaseReference.child(username).child("saveCurrentDate");
 //                        deleteRef5.removeValue();
@@ -115,9 +98,8 @@ public class ReserveListFragment extends Fragment {
         return v;
     }
 
-//    @Override
-//    public void onStart() {
-    public void showDetail() {
+    @Override
+    public void onStart() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user!=null){
             if(user.getDisplayName()!=null) {
@@ -152,59 +134,8 @@ public class ReserveListFragment extends Fragment {
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {}
                 });
-
-                DatabaseReference userRef4 = databaseReference.child(username).child("countHours");
-                userRef4.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        String hours2;
-                        Calendar c = Calendar.getInstance();
-                        int countHours = Integer.parseInt(dataSnapshot.getValue(String.class));
-
-                        SimpleDateFormat hour2 = new SimpleDateFormat("HH");
-                        hours2 = hour2.format(c.getTime());
-                        int countHours2 = Integer.parseInt(hours2);
-
-                        totalHour = countHours2 - countHours;
-                        if (totalHour < 1){
-                            DatabaseReference userRef4 = databaseReference.child(username).child("countMinutes");
-                            userRef4.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    String minutes2;
-                                    Calendar c2 = Calendar.getInstance();
-                                    int countMinutes = Integer.parseInt(dataSnapshot.getValue(String.class));
-
-                                    SimpleDateFormat minute2 = new SimpleDateFormat("mm");
-                                    minutes2 = minute2.format(c2.getTime());
-                                    int countMinutes2 = Integer.parseInt(minutes2);
-
-                                    totalMinute = countMinutes2 - countMinutes;
-                                    if(totalMinute<=1){
-                                        totalReservedText.setText(Integer.toString(totalMinute) + " Minute");
-                                    }
-                                    else if(totalMinute>1){
-                                        totalReservedText.setText(Integer.toString(totalMinute) + " Minutes");
-                                    }
-                                }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {}
-                            });
-                        }
-                        else if (totalHour >= 1) {
-                            if(totalHour==1) {
-                                totalReservedText.setText(Integer.toString(totalHour) + " Hour");
-                            }
-                            else if(totalHour>1) {
-                                totalReservedText.setText(Integer.toString(totalHour) + " Hours");
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {}
-                });
             }
         }
-//        super.onStart();
+        super.onStart();
     }
 }

@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     ActionBarDrawerToggle actionBarDrawerToggle;
 
-    private BroadcastReceiver batterylevelReciever = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-            batteryStatusText.setText(String.valueOf(level) + "%");
-        }
-    };
+//    private BroadcastReceiver batterylevelReciever = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
+//            batteryStatusText.setText(String.valueOf(level) + "%");
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,15 +65,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         toolbar = findViewById(R.id.toolBarID);
         setSupportActionBar(toolbar);
-        toolbar.inflateMenu(R.menu.settings_menu_bar);
 
-        batteryPercentagetoolbar = findViewById(R.id.BatteryPercentageToolBarID);
-        batteryStatusText = findViewById(R.id.batteryStatusOutputID);
-        this.registerReceiver(this.batterylevelReciever, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-
-        data = findViewById(R.id.dataStatusOutputID);
-        wifi = findViewById(R.id.wifiStatusOutputID);
-        checkNetworkStatus();
+//        toolbar.inflateMenu(R.menu.settings_menu_bar);
+//        batteryPercentagetoolbar = findViewById(R.id.BatteryPercentageToolBarID);
+//        batteryStatusText = findViewById(R.id.batteryStatusOutputID);
+//        this.registerReceiver(this.batterylevelReciever, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+//        data = findViewById(R.id.dataStatusOutputID);
+//        wifi = findViewById(R.id.wifiStatusOutputID);
+//        checkNetworkStatus();
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 toolbar, R.string.drawerOpen, R.string.drawerClose);
@@ -87,24 +86,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    public void checkNetworkStatus(){
-        boolean wifiConnected, dataConnected;
-        ConnectivityManager connectivityManager = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeInfo = connectivityManager.getActiveNetworkInfo();
-        if(activeInfo!=null && activeInfo.isConnected()){
-            wifiConnected = activeInfo.getType() == ConnectivityManager.TYPE_WIFI;
-            dataConnected = activeInfo.getType() == ConnectivityManager.TYPE_MOBILE;
-            if(wifiConnected){
-                wifi.setImageResource(R.drawable.ic_wifi_black_24dp);
-                data.setImageResource(R.drawable.ic_do_not_disturb_black_24dp);
-            }
-            else if(dataConnected){
-                data.setImageResource(R.drawable.ic_mobile_data_black_24dp);
-                wifi.setImageResource(R.drawable.ic_no_wifi_black_24dp);
-            }
-        }
-    }
+//    public void checkNetworkStatus(){
+//        boolean wifiConnected, dataConnected;
+//        ConnectivityManager connectivityManager = (ConnectivityManager)
+//                getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo activeInfo = connectivityManager.getActiveNetworkInfo();
+//        if(activeInfo!=null && activeInfo.isConnected()){
+//            wifiConnected = activeInfo.getType() == ConnectivityManager.TYPE_WIFI;
+//            dataConnected = activeInfo.getType() == ConnectivityManager.TYPE_MOBILE;
+//            if(wifiConnected){
+//                wifi.setImageResource(R.drawable.ic_wifi_black_24dp);
+//                data.setImageResource(R.drawable.ic_do_not_disturb_black_24dp);
+//            }
+//            else if(dataConnected){
+//                data.setImageResource(R.drawable.ic_mobile_data_black_24dp);
+//                wifi.setImageResource(R.drawable.ic_no_wifi_black_24dp);
+//            }
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

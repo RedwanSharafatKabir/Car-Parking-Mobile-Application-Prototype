@@ -126,18 +126,14 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback {
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                final String saveCurrentDate, saveCurrentTime, countHours, countMinutes;
+                final String saveCurrentDate, saveCurrentTime;
                 Calendar c = Calendar.getInstance();
                 SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
                 saveCurrentDate = currentDate.format(c.getTime());
                 SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
                 saveCurrentTime = currentTime.format(c.getTime());
-                SimpleDateFormat hour = new SimpleDateFormat("HH");
-                countHours = hour.format(c.getTime());
-                SimpleDateFormat minute = new SimpleDateFormat("mm");
-                countMinutes = minute.format(c.getTime());
 
-                StoreReservedListData(markertitle, saveCurrentDate, saveCurrentTime, countHours, countMinutes);
+                StoreReservedListData(markertitle, saveCurrentDate, saveCurrentTime);
                 Toast.makeText(getActivity(), "Added to your reserve list", Toast.LENGTH_LONG).show();
             }
         });
@@ -151,8 +147,7 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback {
         alertDialog.show();
     }
 
-    public void StoreReservedListData(String markertitle, String saveCurrentDate,
-                                      String saveCurrentTime, String countHours, String countMinutes){
+    public void StoreReservedListData(String markertitle, String saveCurrentDate, String saveCurrentTime){
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user!=null){
@@ -163,7 +158,7 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback {
 
         String Key_User_Info = username;
         StoreReservedData storeReservedData;
-        storeReservedData = new StoreReservedData(markertitle, saveCurrentDate, saveCurrentTime, countHours, countMinutes);
+        storeReservedData = new StoreReservedData(markertitle, saveCurrentDate, saveCurrentTime);
         databaseReference.child(Key_User_Info).setValue(storeReservedData);
     }
 }
