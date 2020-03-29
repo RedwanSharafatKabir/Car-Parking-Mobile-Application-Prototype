@@ -9,6 +9,11 @@
     android:orientation="vertical"
     tools:context=".LoginScreen">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="170dp"

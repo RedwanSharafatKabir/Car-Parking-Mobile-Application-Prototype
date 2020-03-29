@@ -19,35 +19,8 @@ public class LoginScreen extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder alertDialogBuilder;
-
-        alertDialogBuilder = new AlertDialog.Builder(this);
-
-        alertDialogBuilder.setTitle(R.string.alert_title);
-        alertDialogBuilder.setMessage(R.string.alert_message);
-        alertDialogBuilder.setIcon(R.drawable.exit);
-        alertDialogBuilder.setCancelable(false);
-
-        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-                System.exit(0);
-            }
-        });
-        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        alertDialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+        Intent it = new Intent(getApplicationContext(), HomeScreen.class);
+        startActivity(it);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
