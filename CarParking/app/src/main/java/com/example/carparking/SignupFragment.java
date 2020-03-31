@@ -79,19 +79,19 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
         if(v.getId()==R.id.SignupID){
 
             if(Email.isEmpty()) {
-                Editemail.setError("Fill up all required fields");
+                Editemail.setError("Fill this field");
                 Editemail.setText("");
             }
             if(Username.isEmpty()) {
-                usernm.setError("Fill up all required fields");
+                usernm.setError("Fill this field");
                 usernm.setText("");
             }
             if(Password.isEmpty()) {
-                Editpass.setError("Fill up all required fields");
+                Editpass.setError("Fill this field");
                 Editpass.setText("");
             }
             if(ConfirmPassword.isEmpty()) {
-                confirmpass.setError("Fill up all required fields");
+                confirmpass.setError("Fill this field");
                 confirmpass.setText("");
             }
 

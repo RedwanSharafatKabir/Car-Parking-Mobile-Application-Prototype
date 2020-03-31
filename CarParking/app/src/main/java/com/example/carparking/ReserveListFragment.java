@@ -28,7 +28,6 @@ public class ReserveListFragment extends Fragment {
     ImageView bkash, dbbl;
     DatabaseReference databaseReference;
     String username, markertitle,  saveCurrentDate, saveCurrentTime;
-    int totalHour, totalMinute;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

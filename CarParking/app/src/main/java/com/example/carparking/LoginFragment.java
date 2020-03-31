@@ -68,11 +68,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         if(v.getId()==R.id.SigninID){
             if (emailobj.isEmpty()) {
-                usernameEmail.setError("Fill up all required fields");
+                usernameEmail.setError("Fill this field");
                 usernameEmail.setText("");
             }
             if(passobj.isEmpty()){
-                password.setError("Fill up all required fields");
+                password.setError("Fill this field");
                 password.setText("");
             }
             if(!Patterns.EMAIL_ADDRESS.matcher(emailobj).matches()) {

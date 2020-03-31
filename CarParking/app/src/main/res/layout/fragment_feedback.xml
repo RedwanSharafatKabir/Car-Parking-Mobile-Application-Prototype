@@ -4,16 +4,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FeedbackFragment"
-    android:background="#ffffff">
+    android:background="@drawable/yellow">
 
-    <TextView
-        android:id="@+id/feedbackFragmentTextID"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Feedback Fragment"
-        android:textSize="25dp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:layout_gravity="center"/>
+        tools:context=".Feedback"
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textSize="30dp"
+            android:textColor="#000000"
+            android:text="Review Us"
+            android:gravity="center"
+            android:typeface="serif"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="40dp"/>
+
+        <EditText
+            android:id="@+id/nameID"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Enter username"
+            android:backgroundTint="#0A4775"
+            android:textColorHint="#000000"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/emailID"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Email"
+            android:backgroundTint="#0A4775"
+            android:textColorHint="#000000"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/feedbackID"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Give feedback"
+            android:backgroundTint="#0A4775"
+            android:textColorHint="#000000"
+            android:textSize="20dp"
+            android:textAlignment="viewStart"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/sendID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D30C8585"
+            android:padding="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="30dp"
+            android:text="Send"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:background="@drawable/sharp_rectangle"/>
+
+    </LinearLayout>
 </FrameLayout>
