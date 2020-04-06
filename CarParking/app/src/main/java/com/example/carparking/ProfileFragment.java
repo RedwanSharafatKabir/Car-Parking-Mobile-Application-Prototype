@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import android.widget.Toast;
@@ -21,8 +22,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -35,12 +39,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private static final int CHOOSE_IMAGE = 1;
     CircleImageView circleImageView;
     TextView nameTextview, emailTextview;
-    Button youareawesome;
+    EditText phoneTextview;
+    Button youareawesome, save;
     FirebaseAuth mAuth;
     Uri uriProfileImage;
-    String profileImageUrl;
+    String profileImageUrl, phoneNumber, Username;
     StorageReference profileImageRef;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, reference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,15 +53,19 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         youareawesome = v.findViewById(R.id.youAwesomeButtonID);
         youareawesome.setOnClickListener(this);
+        save = v.findViewById(R.id.saveButtonID);
+        save.setOnClickListener(this);
 
         nameTextview = v.findViewById(R.id.usernameBelowProfilePicID);
         emailTextview = v.findViewById(R.id.emailBelowProfilePicID);
+        phoneTextview = v.findViewById(R.id.phoneBelowProfilePicID);
 
         circleImageView = v.findViewById(R.id.profilePicID);
         circleImageView.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Upload");
+        reference = FirebaseDatabase.getInstance().getReference("Phone Number");
 
         return v;
     }
@@ -70,11 +79,21 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 Glide.with(getActivity()).load(user.getPhotoUrl().toString()).into(circleImageView);
             }
             if(user.getDisplayName()!=null) {
-                nameTextview.setText("Name: " + user.getDisplayName());
+                nameTextview.setText(user.getDisplayName());
+                Username = user.getDisplayName();
             }
             if(user.getEmail()!=null){
-                emailTextview.setText("Email: " + user.getEmail());
+                emailTextview.setText(" " + user.getEmail());
             }
+            DatabaseReference userRef1 = databaseReference.child(Username).child("phoneNumber");
+            userRef1.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    phoneTextview.setText(dataSnapshot.getValue(String.class));
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {}
+            });
         }
 
         super.onStart();
@@ -91,6 +110,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     .duration(700)
                     .repeat(1)
                     .playOn(circleImageView);
+        }
+
+        if(v.getId()==R.id.saveButtonID){
+            phoneNumber = phoneTextview.getText().toString();
+
+            String Key_User_Info = Username;
+            StorePhoneNumber storePhoneNumber;
+            storePhoneNumber = new StorePhoneNumber(phoneNumber);
+            reference.child(Key_User_Info).setValue(storePhoneNumber);
         }
     }
 

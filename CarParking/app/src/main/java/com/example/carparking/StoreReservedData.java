@@ -5,7 +5,7 @@ public class StoreReservedData {
     String saveCurrentDate;
     String saveCurrentTime;
 
-    public StoreReservedData(){
+    public StoreReservedData(int i){
 
     }
 

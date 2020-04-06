@@ -58,7 +58,7 @@
                             android:id="@+id/floatingActionButtonID"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end|bottom"
+                            android:layout_gravity="start|bottom"
                             android:layout_margin="16dp"
                             android:backgroundTint="@color/c3"
                             app:fabSize="normal"

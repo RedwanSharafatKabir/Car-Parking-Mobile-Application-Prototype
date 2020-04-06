@@ -1,13 +1,5 @@
 package com.example.carparking;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.WindowManager;
-import androidx.appcompat.app.AppCompatActivity;
-
 public class StoreData {
 
     String Email;
