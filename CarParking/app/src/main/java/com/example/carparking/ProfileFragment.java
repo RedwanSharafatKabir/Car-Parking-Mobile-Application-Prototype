@@ -85,17 +85,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             if(user.getEmail()!=null){
                 emailTextview.setText(" " + user.getEmail());
             }
-            DatabaseReference userRef1 = databaseReference.child(Username).child("phoneNumber");
+            DatabaseReference userRef1 = reference.child(Username).child("phoneNumber");
             userRef1.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    phoneTextview.setText(dataSnapshot.getValue(String.class));
+                    phoneTextview.setText(" " + dataSnapshot.getValue(String.class));
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {}
             });
         }
-
         super.onStart();
     }
 

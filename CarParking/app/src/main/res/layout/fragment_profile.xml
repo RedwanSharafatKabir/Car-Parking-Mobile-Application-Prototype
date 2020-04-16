@@ -8,109 +8,112 @@
     android:background="@drawable/flame_a"
     android:layout_gravity="center">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:background="@android:color/transparent">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profilePicID"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_gravity="center"
-            android:src="@drawable/camera"
-            android:clickable="true"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true"
-            app:contentPadding="3dp"
-            android:foregroundGravity="center"
-            android:layout_marginBottom="30dp"/>
-
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center"
-            android:paddingBottom="30dp"
-            android:paddingTop="30dp"
-            android:background="#1DB9AC36">
+            android:paddingTop="5dp"
+            android:background="@android:color/transparent">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePicID"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:src="@drawable/camera"
+                android:clickable="true"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="3dp"
+                android:foregroundGravity="center"
+                android:layout_marginBottom="30dp"/>
 
-            <TextView
-                android:id="@+id/usernameBelowProfilePicID"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:textSize="30sp"
-                android:textColor="#ffffff"
-                android:textAlignment="center"
-                android:typeface="serif"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/emailBelowProfilePicID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="25sp"
-                android:textColor="#ffffff"
-                android:textAlignment="center"
-                android:typeface="serif"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_marginTop="20dp"
-                android:drawableLeft="@drawable/contact_mail" />
-
-            <EditText
-                android:id="@+id/phoneBelowProfilePicID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="25sp"
-                android:textColor="#ffffff"
-                android:textAlignment="center"
-                android:typeface="serif"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_marginTop="30dp"
-                android:drawableLeft="@drawable/ic_phone_black_24dp"
-                android:inputType="number"
-                android:hint=" phone number"
-                android:background="@android:color/transparent"
-                android:textColorHint="#ffffff"/>
-
-            <Button
-                android:id="@+id/saveButtonID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/youawesomebutton"
-                android:text="Save"
-                android:textColor="#FFFFFF"
-                android:textSize="23dp"
-                android:textAllCaps="false"
-                android:textAlignment="center"
                 android:gravity="center"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:layout_marginTop="30dp"/>
+                android:paddingBottom="30dp"
+                android:paddingTop="30dp"
+                android:background="#1DB9AC36">
 
-            <Button
-                android:id="@+id/youAwesomeButtonID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/youawesomebutton"
-                android:text="You are awesome  "
-                android:textColor="#FFFFFF"
-                android:textSize="23dp"
-                android:textAllCaps="false"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:layout_marginTop="30dp"
-                android:drawableRight="@drawable/you_are_awesome"/>
+                <TextView
+                    android:id="@+id/usernameBelowProfilePicID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:textColor="#ffffff"
+                    android:textAlignment="center"
+                    android:typeface="serif"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/emailBelowProfilePicID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="25sp"
+                    android:textColor="#ffffff"
+                    android:textAlignment="center"
+                    android:typeface="serif"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_marginTop="20dp"
+                    android:drawableLeft="@drawable/contact_mail" />
+
+                <EditText
+                    android:id="@+id/phoneBelowProfilePicID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="25sp"
+                    android:textColor="#ffffff"
+                    android:textAlignment="center"
+                    android:typeface="serif"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_marginTop="30dp"
+                    android:drawableLeft="@drawable/ic_phone_black_24dp"
+                    android:inputType="number"
+                    android:background="@android:color/transparent"
+                    android:textColorHint="#ffffff"
+                    android:text=" Phone number"/>
+
+                <Button
+                    android:id="@+id/saveButtonID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/youawesomebutton"
+                    android:text="Save"
+                    android:textColor="#FFFFFF"
+                    android:textSize="23dp"
+                    android:textAllCaps="false"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:layout_marginTop="30dp"/>
+
+                <Button
+                    android:id="@+id/youAwesomeButtonID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="30dp"
+                    android:drawableRight="@drawable/you_are_awesome" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </FrameLayout>

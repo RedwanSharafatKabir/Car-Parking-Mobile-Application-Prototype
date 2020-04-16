@@ -55,6 +55,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         return v;
     }
+
     @Override
     public void onClick(View v) {
         final String emailobj = usernameEmail.getText().toString();

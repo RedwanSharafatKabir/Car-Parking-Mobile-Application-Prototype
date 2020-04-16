@@ -14,13 +14,21 @@
         android:roundIcon="@mipmap/park_my_car_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".admin_panel.AdminHomePage"
+            android:screenOrientation="fullSensor">
+        </activity>
+
+        <activity android:name=".admin_panel.AdminLoginScreen"
+            android:screenOrientation="fullSensor"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".HomeScreen"
-            android:theme="@style/AppTheme.Launcher">
+        <activity
+            android:name=".HomeScreen"
+            android:theme="@style/AppTheme.Launcher"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,11 +53,10 @@
         <activity
             android:name=".LoginScreen"
             android:screenOrientation="fullSensor">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <activity

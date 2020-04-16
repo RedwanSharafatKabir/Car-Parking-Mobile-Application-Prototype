@@ -113,17 +113,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.settingsID){
-            Fragment fragment = new SettingsFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragmentID, fragment).commit();
+        if(item.getItemId()==R.id.logoutID){
+            finish();
+            Intent it = new Intent(MainActivity.this, LoginScreen.class);
+            startActivity(it);
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
         // close navigation drawer using "closeDrawer()" method
         drawerLayout.closeDrawer(GravityCompat.START,true);
 
@@ -190,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         alertDialogBuilder = new AlertDialog.Builder(this);
 
-        alertDialogBuilder.setTitle("Do you want to turn off this window ?");
+        alertDialogBuilder.setTitle("Are you sure to leave ?\n you will be logged out");
         alertDialogBuilder.setIcon(R.drawable.exit);
 
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

@@ -4,82 +4,148 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FeedbackFragment"
-    android:background="@drawable/yellow">
+    android:background="#2E2D2D">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".Feedback"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:layout_gravity="center">
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textSize="30dp"
-            android:textColor="#000000"
-            android:text="Review Us"
-            android:gravity="center"
-            android:typeface="serif"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_marginBottom="40dp"/>
+            android:layout_height="match_parent"
+            tools:context=".FeedbackFragment"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
 
-        <EditText
-            android:id="@+id/nameID"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:hint="Enter username"
-            android:backgroundTint="#0A4775"
-            android:textColorHint="#000000"
-            android:textSize="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:textSize="30dp"
+                android:textColor="#ffffff"
+                android:text="Review Us"
+                android:gravity="center"
+                android:typeface="serif"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="30dp"
+                android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/emailID"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:hint="Email"
-            android:backgroundTint="#0A4775"
-            android:textColorHint="#000000"
-            android:textSize="20dp"/>
+            <RadioGroup
+                android:id="@+id/radiogroupID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <RadioButton
+                    android:id="@+id/greatRadioButtonID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/white_shape"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:gravity="center"
+                    android:text="   It was great"
+                    android:textSize="25dp"
+                    android:textColor="#ffffff"
+                    android:textAlignment="viewStart"
+                    android:typeface="serif"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat"
+                    android:layout_marginBottom="5dp"/>
 
-        <EditText
-            android:id="@+id/feedbackID"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:hint="Give feedback"
-            android:backgroundTint="#0A4775"
-            android:textColorHint="#000000"
-            android:textSize="20dp"
-            android:textAlignment="viewStart"
-            tools:ignore="RtlCompat" />
+                <RadioButton
+                    android:id="@+id/okayRadioButtonID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/white_shape"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:gravity="center"
+                    android:text="   It was okay"
+                    android:textSize="25dp"
+                    android:textColor="#ffffff"
+                    android:textAlignment="viewStart"
+                    android:typeface="serif"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat"
+                    android:layout_marginBottom="5dp"/>
 
-        <Button
-            android:id="@+id/sendID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#D30C8585"
-            android:padding="20dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="30dp"
-            android:text="Send"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            android:background="@drawable/sharp_rectangle"/>
+                <RadioButton
+                    android:id="@+id/badRadioButtonID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/white_shape"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:gravity="center"
+                    android:text="   It was damn"
+                    android:textSize="25dp"
+                    android:textColor="#ffffff"
+                    android:textAlignment="viewStart"
+                    android:typeface="serif"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
+            </RadioGroup>
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:text="Anything else you'd like to add ?"
+                android:paddingTop="50dp"
+                android:paddingBottom="5dp"/>
+
+            <EditText
+                android:id="@+id/feedbackID"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/feedback_text"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="17dp"
+                tools:ignore="RtlCompat"
+                android:textAllCaps="false"
+                android:hint="  Your message will help us to improve"
+                android:gravity="top|left"/>
+
+            <Button
+                android:id="@+id/sendID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/submit_button"
+                android:paddingRight="25dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:text="Submit Feedback"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="20dp"/>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

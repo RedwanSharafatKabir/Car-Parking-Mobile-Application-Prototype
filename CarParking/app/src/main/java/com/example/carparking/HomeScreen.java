@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.carparking.admin_panel.AdminLoginScreen;
+
 public class HomeScreen extends AppCompatActivity implements View.OnClickListener {
 
     Button user, admin;
@@ -23,7 +25,7 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
         admin = findViewById(R.id.adminButtonID);
 
         user.setOnClickListener(this);
-//        admin.setOnClickListener(this);
+        admin.setOnClickListener(this);
     }
 
     @Override
@@ -34,9 +36,11 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
-//        if(v.getId()==R.id.adminButtonID){
-//            Intent it = new Intent(getApplicationContext(), LoginScreen.class);
-//        }
+        if(v.getId()==R.id.adminButtonID){
+            Intent it = new Intent(getApplicationContext(), AdminLoginScreen.class);
+            startActivity(it);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
     }
 
     @Override

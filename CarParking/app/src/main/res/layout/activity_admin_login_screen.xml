@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/yellow"
+    android:orientation="vertical"
+    tools:context=".admin_panel.AdminLoginScreen">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:gravity="center">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:src="@drawable/lambo"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Let Your Car Take Some Rest"
+                android:textSize="22sp"
+                android:fontFamily="@font/squaresharps"
+                android:textColor="#000000"
+                android:textAlignment="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/layout_background"
+                android:layout_marginTop="130dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+                    <EditText
+                        android:id="@+id/adminLoginEmailID"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:background="@android:color/transparent"
+                        android:inputType="text"
+                        android:hint=" Email"
+                        android:textColorHint="#000000"
+                        android:drawableLeft="@drawable/ic_verified_user_black_24dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="50dp"/>
+                    <View
+                        android:layout_width="300dp"
+                        android:layout_height="1dp"
+                        android:background="#000000"
+                        android:layout_gravity="center"/>
+                    <EditText
+                        android:id="@+id/adminLoginpassID"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:background="@android:color/transparent"
+                        android:inputType="textPassword"
+                        android:hint=" Password"
+                        android:textColorHint="#000000"
+                        android:drawableLeft="@drawable/ic_lock_black_24dp"
+                        android:layout_gravity="center"/>
+                    <View
+                        android:layout_width="300dp"
+                        android:layout_height="1dp"
+                        android:background="#000000"
+                        android:layout_gravity="center"/>
+                    <View
+                        android:layout_width="300dp"
+                        android:layout_height="10dp"
+                        android:background="@android:color/transparent"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="80dp"
+                        android:background="@android:color/transparent"/>
+                    <Button
+                        android:id="@+id/adminSigninID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginTop="70dp"
+                        android:background="@drawable/customize_login_signup_background"
+                        android:text="Sign in"
+                        android:textColor="#FFFFFF"
+                        android:textSize="23dp"
+                        android:textAllCaps="false"
+                        android:textAlignment="center"/>
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:background="@android:color/transparent"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

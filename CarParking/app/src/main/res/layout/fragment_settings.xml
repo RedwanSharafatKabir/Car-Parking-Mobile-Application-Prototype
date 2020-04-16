@@ -7,14 +7,18 @@
     tools:context=".SettingsFragment"
     android:background="#ffffff">
 
-    <TextView
-        android:id="@+id/settingsFragmentTextID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings Fragment"
-        android:textSize="25dp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:layout_gravity="center"/>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/settingsFragmentTextID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings Fragment"
+            android:textSize="25dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+    </ScrollView>
 </FrameLayout>

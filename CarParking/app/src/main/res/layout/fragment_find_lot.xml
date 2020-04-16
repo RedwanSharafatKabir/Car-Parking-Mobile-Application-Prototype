@@ -60,5 +60,4 @@
             android:clickable="true"
             android:background="@drawable/white_rectangle_shape"/>
     </RelativeLayout>
-
 </FrameLayout>
