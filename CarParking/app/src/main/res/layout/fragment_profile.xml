@@ -82,8 +82,7 @@
                     android:drawableLeft="@drawable/ic_phone_black_24dp"
                     android:inputType="number"
                     android:background="@android:color/transparent"
-                    android:textColorHint="#ffffff"
-                    android:text=" Phone number"/>
+                    android:textColorHint="#ffffff"/>
 
                 <Button
                     android:id="@+id/saveButtonID"
