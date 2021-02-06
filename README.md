@@ -1,6 +1,6 @@
 ## Car-Parking-Mobile-Application-Prototype
 
-An andoid application which performs to find nearby parking lots of a car driver. It is built on android studio so you can run this project by installing apk file on any version of android phone. You can also work on this project using android studio.
+An android application which performs to find nearby parking lots of a car driver. It is built on android studio so you can run this project by installing apk file on any version of android phone. You can also work on this project using android studio.
 - - - -
 #### Internet-permission in AndroidManifest.xml -
 * uses-permission android:name="android.permission.INTERNET"
