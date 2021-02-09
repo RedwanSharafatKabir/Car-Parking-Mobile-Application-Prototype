@@ -9,33 +9,46 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <fragment
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:map="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/map_fragmentID"
+            android:id="@+id/mapID"
             android:name="com.google.android.gms.maps.MapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".FindLotFragment"/>
 
+        <LinearLayout
+            android:id="@+id/linearLayoutID"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:layout_marginTop="0dp"/>
+
         <RelativeLayout
             android:id="@+id/relativeLayoutID"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
             android:elevation="10dp"
-            android:background="#FFFFFF">
+            android:background="#FFFFFF"
+            android:layout_below="@+id/linearLayoutID">
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/magnifyMapID"
                 android:layout_centerVertical="true"
                 android:src="@drawable/magnifymap_foreground"/>
-            <EditText
+
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/searchMapID"
@@ -45,19 +58,12 @@
                 android:textColor="#000000"
                 android:layout_toRightOf="@+id/magnifyMapID"
                 android:background="@android:color/transparent"
-                android:hint="State, City or Zip code"
-                android:imeOptions="actionSearch"/>
+                android:hint="State or City"
+                android:imeOptions="actionSearch"
+                android:textColorHint="#333333"/>
+
         </RelativeLayout>
 
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:id="@+id/getDeviceID"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/relativeLayoutID"
-            android:src="@drawable/gps_foreground"
-            android:layout_marginRight="10dp"
-            android:clickable="true"
-            android:background="@drawable/white_rectangle_shape"/>
     </RelativeLayout>
+
 </FrameLayout>

@@ -135,7 +135,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         if(requestCode==CHOOSE_IMAGE && resultCode==RESULT_OK && data!=null && data.getData()!=null){
             uriProfileImage = data.getData();
 
-            Picasso.with(getActivity()).load(uriProfileImage).into(circleImageView);
+            Picasso.get().load(uriProfileImage).into(circleImageView);
 
             uploadImageToFirebase();
         }

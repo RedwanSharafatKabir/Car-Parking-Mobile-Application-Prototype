@@ -8,75 +8,76 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:openDrawer="start"
+        android:id="@+id/drawerID"
+        android:fitsSystemWindows="true">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#FDD835">
-            <androidx.appcompat.widget.Toolbar
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/toolBarID"
-                android:outlineAmbientShadowColor="#000000"
-                android:outlineSpotShadowColor="#000000"
-                android:theme="@style/Animation.Design.BottomSheetDialog">
-                <TextView
+                android:orientation="horizontal"
+                android:background="#FDD835">
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/toolBarID"
+                    android:outlineAmbientShadowColor="#000000"
+                    android:outlineSpotShadowColor="#000000"
+                    android:theme="@style/Animation.Design.BottomSheetDialog">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Park My Car"
+                        android:layout_toRightOf="@+id/toolBarID"
+                        android:layout_alignBaseline="@id/toolBarID"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/android101"/>
+                </androidx.appcompat.widget.Toolbar>
+
+            </LinearLayout>
+
+            <fragment
+                android:id="@+id/fragmentID"
+                android:name="com.example.carparking.HomeFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingActionButtonID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Park My Car"
-                    android:layout_toRightOf="@+id/toolBarID"
-                    android:layout_alignBaseline="@id/toolBarID"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/android101"/>
-            </androidx.appcompat.widget.Toolbar>
+                    android:layout_gravity="start|bottom"
+                    android:layout_margin="16dp"
+                    android:backgroundTint="@color/c3"
+                    app:fabSize="normal"
+                    app:elevation="6dp"
+                    android:src="@drawable/ic_recent_actors_black_24dp"/>
+            </fragment>
         </LinearLayout>
 
-        <androidx.drawerlayout.widget.DrawerLayout
+        <com.google.android.material.navigation.NavigationView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:openDrawer="start"
-            android:id="@+id/drawerID"
-            android:fitsSystemWindows="true">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <fragment
-                        android:id="@+id/fragmentID"
-                        android:name="com.example.carparking.HomeFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/floatingActionButtonID"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start|bottom"
-                            android:layout_margin="16dp"
-                            android:backgroundTint="@color/c3"
-                            app:fabSize="normal"
-                            app:elevation="6dp"
-                            android:src="@drawable/ic_recent_actors_black_24dp"/>
-                    </fragment>
-                </LinearLayout>
-            <com.google.android.material.navigation.NavigationView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/navigationViewID"
-                app:menu="@menu/menu_item"
-                app:headerLayout="@layout/header"
-                app:itemBackground="@color/c4"
-                android:layout_gravity="start"
-                app:itemTextColor="#000000"
-                app:itemTextAppearance="@style/menu_text_style" />
+            android:id="@+id/navigationViewID"
+            app:menu="@menu/menu_item"
+            app:headerLayout="@layout/header"
+            app:itemBackground="@color/c4"
+            android:layout_gravity="start"
+            app:itemTextColor="#000000"
+            app:itemTextAppearance="@style/menu_text_style" />
 
         </androidx.drawerlayout.widget.DrawerLayout>
-    </LinearLayout>
+
 </LinearLayout>

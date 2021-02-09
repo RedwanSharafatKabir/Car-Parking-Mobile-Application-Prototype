@@ -25,7 +25,7 @@ import org.w3c.dom.Text;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    TextView profile, about, settings, feedback, btn1, logout, welcome;
+    TextView profile, about, settings, feedback, btn1, logout;
     FirebaseAuth mAuth;
 
     @Override
@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         settings = (TextView) v.findViewById(R.id.settingsID);
         feedback = (TextView) v.findViewById(R.id.feedbackID);
         logout = (TextView) v.findViewById(R.id.logoutID);
-        welcome = (TextView) v.findViewById(R.id.welcomeHomeID);
 
         btn1.setOnClickListener(this);
         profile.setOnClickListener(this);
@@ -47,7 +46,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         settings.setOnClickListener(this);
         feedback.setOnClickListener(this);
         logout.setOnClickListener(this);
-        welcome.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -86,32 +84,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         else if(v.getId()==R.id.logoutID){
             shutDownFunction();
         }
-        else if(v.getId()==R.id.welcomeHomeID){
-            YoYo.with(Techniques.Tada)
-                    .duration(700)
-                    .repeat(1)
-                    .playOn(profile);
-            YoYo.with(Techniques.Tada)
-                    .duration(700)
-                    .repeat(1)
-                    .playOn(btn1);
-            YoYo.with(Techniques.Tada)
-                    .duration(700)
-                    .repeat(1)
-                    .playOn(settings);
-            YoYo.with(Techniques.Tada)
-                    .duration(700)
-                    .repeat(1)
-                    .playOn(about);
-            YoYo.with(Techniques.Tada)
-                    .duration(700)
-                    .repeat(1)
-                    .playOn(feedback);
-            YoYo.with(Techniques.Tada)
-                    .duration(700)
-                    .repeat(1)
-                    .playOn(logout);
-        }
+//        else if(v.getId()==R.id.welcomeHomeID){
+//            YoYo.with(Techniques.Tada)
+//                    .duration(700)
+//                    .repeat(1)
+//                    .playOn(profile);
+//            YoYo.with(Techniques.Tada)
+//                    .duration(700)
+//                    .repeat(1)
+//                    .playOn(btn1);
+//            YoYo.with(Techniques.Tada)
+//                    .duration(700)
+//                    .repeat(1)
+//                    .playOn(settings);
+//            YoYo.with(Techniques.Tada)
+//                    .duration(700)
+//                    .repeat(1)
+//                    .playOn(about);
+//            YoYo.with(Techniques.Tada)
+//                    .duration(700)
+//                    .repeat(1)
+//                    .playOn(feedback);
+//            YoYo.with(Techniques.Tada)
+//                    .duration(700)
+//                    .repeat(1)
+//                    .playOn(logout);
+//        }
     }
 
     public void shutDownFunction() {
@@ -119,7 +117,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         alertDialogBuilder = new AlertDialog.Builder(getActivity());
 
-        alertDialogBuilder.setTitle("Do you want to leave this app ?");
+        alertDialogBuilder.setTitle("Are you sure to log out ?");
         alertDialogBuilder.setCancelable(true);
 
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

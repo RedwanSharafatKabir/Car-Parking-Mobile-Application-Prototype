@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name="androidx.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/park_my_car_logo"
         android:label="@string/app_name"
@@ -15,20 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".admin_panel.AdminHomePage"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
         </activity>
 
         <activity android:name=".admin_panel.AdminLoginScreen"
-            android:screenOrientation="fullSensor"/>
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".HomeScreen"
             android:theme="@style/AppTheme.Launcher"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,12 +34,15 @@
         </activity>
 
         <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.carparking.MainActivity" />
 
@@ -52,17 +52,12 @@
 
         <activity
             android:name=".LoginScreen"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"
-            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

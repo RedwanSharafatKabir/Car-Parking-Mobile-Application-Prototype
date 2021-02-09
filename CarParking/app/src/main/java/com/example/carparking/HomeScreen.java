@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -37,9 +38,10 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
         }
 
         if(v.getId()==R.id.adminButtonID){
-            Intent it = new Intent(getApplicationContext(), AdminLoginScreen.class);
-            startActivity(it);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//            Intent it = new Intent(getApplicationContext(), AdminLoginScreen.class);
+//            startActivity(it);
+//            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            Log.d("Admin", "login");
         }
     }
 

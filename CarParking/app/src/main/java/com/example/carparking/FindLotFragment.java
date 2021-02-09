@@ -1,9 +1,11 @@
 package com.example.carparking;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -12,6 +14,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,51 +22,50 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
-import com.bumptech.glide.load.data.HttpUrlFetcher;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import io.reactivex.disposables.CompositeDisposable;
 
-public class FindLotFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener{
-
-    ImageView imageView;
-    EditText inputSearch;
-    float zoomLevel;
-    String username;
-    int j = 0, i = 0;
-    private GoogleMap mGoogleMap;
-    private static final String TAG = "FindLotFragment";
-    private boolean locationPermissionGranted = true;
-    FusedLocationProviderClient mfusedLocationProviderClient;
+public class FindLotFragment extends Fragment implements OnMapReadyCallback {
 
     LatLng DevicelatLng;
     ArrayList<LatLng> placelist = new ArrayList<LatLng>();
@@ -75,30 +77,40 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback, Vie
     String dhanmondi_shukrabaad = "DIU Parking Lot";
     String mugdaparaHospital = "Mugda Hospital Parking Lot";
     String mugdaparaBTCLoffice = "Mugdapara BTCL Office";
-
     DatabaseReference databaseReference;
+
+    AutoCompleteTextView inputSearch;
+    float zoomLevel = 16f;
+    String username;
+    int j = 0, i = 0;
+    private GoogleMap mGoogleMap;
+    FusedLocationProviderClient mfusedLocationProviderClient;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    MapFragment supportMapFragment;
+
+    @Override
+    public void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View v = inflater.inflate(R.layout.fragment_find_lot, container, false);
-
-        MapFragment mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragmentID);
-        mapFragment.getMapAsync(FindLotFragment.this);
+        supportMapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.mapID);
+        if (supportMapFragment!= null) {
+            supportMapFragment.getMapAsync(this);
+        }
 
         placelist.add(dhanmondi);
         placelist.add(mugdaHospital);
         placelist.add(mugdaBTCL);
-
         title.add(dhanmondi_shukrabaad);
         title.add(mugdaparaHospital);
         title.add(mugdaparaBTCLoffice);
 
-        imageView = v.findViewById(R.id.getDeviceID);
-        imageView.setOnClickListener(this);
         inputSearch = v.findViewById(R.id.searchMapID);
-
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Reserved List");
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -108,21 +120,35 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback, Vie
             }
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            init();
+        }
+
         return v;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void init(){
+        mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-        zoomLevel = 15f;
-
         MapStyleOptions mapStyleOptions = MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.map_style);
         mGoogleMap.setMapStyle(mapStyleOptions);
 
+        // Add markers of primarily specified parking lot location
         for(i=0; i<placelist.size(); i++){
             if(j==i){
                 mGoogleMap.addMarker(new MarkerOptions().position(placelist.get(i)).title(String.valueOf(title.get(j)))
-                .icon(bitmapDescriptorFromVector(getActivity(), R.drawable.lot_marker)));
+                        .icon(bitmapDescriptorFromVector(getActivity(), R.drawable.lot_marker)));
             }j++;
             mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(placelist.get(i)));
             mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(placelist.get(i), zoomLevel));
@@ -132,8 +158,7 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback, Vie
                     String markertitle = marker.getTitle();
                     if(markertitle.equals(username)){
                         Toast.makeText(getActivity(), "You cannot park your car here", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+                    } else {
                         Toast.makeText(getActivity(), markertitle, Toast.LENGTH_SHORT).show();
                         BookingAlertDialogFunc(markertitle);
                     }
@@ -142,78 +167,72 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback, Vie
             });
         }
 
-        Toast.makeText(getActivity(), "Map is ready", Toast.LENGTH_LONG).show();
-        Log.d(TAG, "onMapReady: Map is ready");
-        if(locationPermissionGranted){
-            getDeviceLocation();
-            mGoogleMap.setMyLocationEnabled(true);
-            init();
-        }
-        mGoogleMap.setMyLocationEnabled(true);
-    }
-
-    private void init(){
-        Log.d(TAG, "init: initialization");
-
-        inputSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId==EditorInfo.IME_ACTION_SEARCH || actionId==EditorInfo.IME_ACTION_DONE
-                    || event.getAction()==KeyEvent.ACTION_DOWN || event.getAction()==KeyEvent.KEYCODE_ENTER){
-                    geoLocate();
-                }
-                return false;
-            }
-        });
-    }
-
-    private void geoLocate(){
-        Log.d(TAG, "geoLocate: geoLocating");
-        String searchString = inputSearch.getText().toString();
-        Geocoder geocoder = new Geocoder(getActivity());
-        List<Address> list = new ArrayList<>();
-        try{
-            list = geocoder.getFromLocationName(searchString, 1);
-        }catch(IOException e){
-            Log.d(TAG, "geoLocate: ioexception" + e.getMessage());
-        }
-        if(list.size()>0){
-            Address address = list.get(0);
-            Log.d(TAG, "geoLocate: found a location" + address.toString());
-
-            LatLng SearchlatLng = new LatLng(address.getLatitude(), address.getLongitude());
-            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(SearchlatLng));
-            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SearchlatLng, zoomLevel));
-        }
-    }
-
-    private void getDeviceLocation(){
-        Log.d(TAG, "getDeviceLocation: get current device location");
-        mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-        try {
-            if(locationPermissionGranted){
-                Task location = mfusedLocationProviderClient.getLastLocation();
-                location.addOnCompleteListener(new OnCompleteListener() {
+        // Check permission
+        Dexter.withContext(getContext()).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).
+                withListener(new PermissionListener() {
                     @Override
-                    public void onComplete(@NonNull Task task) {
-                        if(task.isSuccessful()){
-                            Log.d(TAG, "onComplete: location found");
-                            Location currentLocation = (Location) task.getResult();
+                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(),
+                                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-                            DevicelatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-                            Log.d(TAG, "moveCamera: move camera to: lat: " + DevicelatLng.latitude + ", lng: " + DevicelatLng.longitude);
-                            mGoogleMap.addMarker(new MarkerOptions().position(DevicelatLng).title(username)
-                                    .icon(bitmapDescriptorFromVector(getActivity(), R.drawable.self_location)));
-                            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(DevicelatLng));
-                            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DevicelatLng, zoomLevel));
-                        } else {
-                            Log.d(TAG, "onComplete: current location null!");
-                            Toast.makeText(getActivity(), "Cannot get device location", Toast.LENGTH_LONG).show();
+                            return;
                         }
+                        mGoogleMap.setMyLocationEnabled(true);
+                        mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+                        mGoogleMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.M)
+                            @Override
+                            public boolean onMyLocationButtonClick() {
+                                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                                        != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(),
+                                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                                    return false;
+                                }
+                                mfusedLocationProviderClient.getLastLocation().addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Snackbar snackbar = Snackbar.make(getView(), "Location permission denied !", Snackbar.LENGTH_LONG);
+                                        View sbView = snackbar.getView();
+                                        sbView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.Red));
+                                        snackbar.setDuration(5000).show();
+                                    }
+                                }).addOnSuccessListener(new OnSuccessListener<Location>() {
+                                    @Override
+                                    public void onSuccess(Location location) {
+                                        DevicelatLng = new LatLng(location.getLatitude(), location.getLongitude());
+                                        mGoogleMap.addMarker(new MarkerOptions().position(DevicelatLng).title(username)
+                                                .icon(bitmapDescriptorFromVector(getActivity(), R.drawable.self_location)));
+                                        mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(DevicelatLng, zoomLevel));
+                                    }
+                                });
+
+                                return true;
+                            }
+                        });
+
+                        // Set device location button layout right bottom
+                        View locationButton = ((View)supportMapFragment.getView().findViewById(Integer.parseInt("1"))
+                                .getParent()).findViewById(Integer.parseInt("2"));
+                        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) locationButton.getLayoutParams();
+                        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+                        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+                        params.setMargins(0, 0, 0, 500);
                     }
-                });
-            }
-        }catch (SecurityException e){Log.d(TAG, "getDeviceLocation: SecurityException" + e.getMessage());}
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                        Snackbar snackbar = Snackbar.make(getView(), "Location permission denied !", Snackbar.LENGTH_LONG);
+                        View sbView = snackbar.getView();
+                        sbView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.Red));
+                        snackbar.setDuration(5000).show();
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {}
+                }).check();
     }
 
     private BitmapDescriptor bitmapDescriptorFromVector(Context context, int VectorID) {
@@ -272,12 +291,5 @@ public class FindLotFragment extends Fragment implements OnMapReadyCallback, Vie
         StoreReservedData storeReservedData;
         storeReservedData = new StoreReservedData(markertitle, saveCurrentDate, saveCurrentTime);
         databaseReference.child(Key_User_Info).setValue(storeReservedData);
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v.getId()==R.id.getDeviceID){
-            getDeviceLocation();
-        }
     }
 }

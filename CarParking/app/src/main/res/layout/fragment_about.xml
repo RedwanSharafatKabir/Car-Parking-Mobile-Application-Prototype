@@ -86,32 +86,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ID :"
-                android:padding="2dp"
-                android:textSize="20dp"
-                android:textColor="#FDD835"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1.5dp"
-                android:layout_below="@+id/developTextID"
-                android:background="#FFFFFF"
-                android:layout_gravity="center"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ids"
-                android:textSize="20dp"
-                android:textColor="#FDD835"
-                android:textStyle="bold"
-                android:padding="5dp"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:padding="5dp"/>
             <TextView
                 android:layout_width="wrap_content"

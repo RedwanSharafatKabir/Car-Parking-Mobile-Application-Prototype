@@ -8,4 +8,7 @@
     <color name="c2">#666f78</color>
     <color name="c3">#353e47</color>
     <color name="c4">#DCDCDC</color>
+
+    <color name="Red">#FF0000</color>
+    <color name="Green">#0FC142</color>
 </resources>
