@@ -15,10 +15,6 @@ An android application which performs to find nearby parking lots of a car drive
 * implementation 'com.google.firebase:firebase-database:19.2.1'
 * implementation 'com.google.firebase:firebase-storage:19.1.1'
 * implementation 'com.google.firebase:firebase-analytics:17.2.3'
-* implementation 'com.squareup.picasso:picasso:2.5.0'
-* implementation 'com.android.support:mediarouter-v7:29.1.1'
-* implementation 'com.github.bumptech.glide:glide:4.11.0'
-* annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 * implementation 'com.firebaseui:firebase-ui-database:6.2.0'<br><br>
 #### Design library dependencies -
 * implementation 'com.android.support:design:29.1.1'
@@ -31,7 +27,6 @@ An android application which performs to find nearby parking lots of a car drive
 * implementation 'com.google.android.gms:play-services-location:17.0.0'
 * implementation 'com.google.android.gms:play-services-places:17.0.0'
 * implementation 'com.google.android.libraries.places:places:2.2.0'
-* implementation 'com.android.support:multidex:1.0.3'
 * implementation 'com.google.android.gms:play-services-plus:17.0.0'
 * implementation 'com.google.android.gms:play-services-auth:18.0.0'
 * implementation 'com.google.android.gms:play-services-base:17.2.1'
