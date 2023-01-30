@@ -1,4 +1,4 @@
-package com.example.carparking;
+package com.find.parkinglot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,12 +6,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-
-import com.example.carparking.admin_panel.AdminLoginScreen;
 
 public class HomeScreen extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,10 +20,10 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_home_screen);
 
         user = findViewById(R.id.userButtonID);
-        admin = findViewById(R.id.adminButtonID);
+//        admin = findViewById(R.id.adminButtonID);
 
         user.setOnClickListener(this);
-        admin.setOnClickListener(this);
+//        admin.setOnClickListener(this);
     }
 
     @Override
@@ -37,12 +34,12 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
-        if(v.getId()==R.id.adminButtonID){
+//        if(v.getId()==R.id.adminButtonID){
 //            Intent it = new Intent(getApplicationContext(), AdminLoginScreen.class);
 //            startActivity(it);
 //            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            Log.d("Admin", "login");
-        }
+//            Log.d("Admin", "login");
+//        }
     }
 
     @Override

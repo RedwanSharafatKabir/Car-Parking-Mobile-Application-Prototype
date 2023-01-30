@@ -4,7 +4,7 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=DD:82:68:97:D1:D7:8C:FE:76:A5:BF:03:09:96:2D:36:CA:84:22:7A%3Bcom.example.carparking
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=DD:82:68:97:D1:D7:8C:FE:76:A5:BF:03:09:96:2D:36:CA:84:22:7A%3Bcom.find.parkinglot
 
     You can also add your credentials to an existing key, using these values:
 

@@ -1,7 +1,6 @@
-package com.example.carparking.admin_panel;
+package com.find.parkinglot.admin_panel;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
-import com.example.carparking.R;
-import com.example.carparking.StoreData;
+import com.find.parkinglot.R;
+import com.find.parkinglot.StoreData;
 import java.util.*;
 
 public class CustomAdapter extends ArrayAdapter<StoreData> {

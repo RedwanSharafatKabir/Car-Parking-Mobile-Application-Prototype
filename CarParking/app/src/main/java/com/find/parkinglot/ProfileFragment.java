@@ -1,4 +1,4 @@
-package com.example.carparking;
+package com.find.parkinglot;
 
 import android.content.Intent;
 import android.net.Uri;

@@ -1,4 +1,4 @@
-package com.example.carparking;
+package com.find.parkinglot;
 
 public class StorePhoneNumber {
 

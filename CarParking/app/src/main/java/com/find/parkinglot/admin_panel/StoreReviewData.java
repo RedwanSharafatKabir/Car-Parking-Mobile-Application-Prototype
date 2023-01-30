@@ -1,4 +1,4 @@
-package com.example.carparking.admin_panel;
+package com.find.parkinglot.admin_panel;
 
 public class StoreReviewData {
     String message;

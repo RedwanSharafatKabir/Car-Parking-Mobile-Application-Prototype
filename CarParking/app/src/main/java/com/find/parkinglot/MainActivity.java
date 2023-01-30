@@ -1,4 +1,4 @@
-package com.example.carparking;
+package com.find.parkinglot;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;

@@ -1,4 +1,4 @@
-package com.example.carparking.admin_panel;
+package com.find.parkinglot.admin_panel;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,17 +7,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.carparking.LoginScreen;
-import com.example.carparking.MainActivity;
-import com.example.carparking.R;
-import com.example.carparking.StoreData;
+import com.find.parkinglot.R;
+import com.find.parkinglot.StoreData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

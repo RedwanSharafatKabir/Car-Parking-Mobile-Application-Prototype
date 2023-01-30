@@ -1,4 +1,4 @@
-package com.example.carparking;
+package com.find.parkinglot;
 
 import org.junit.Test;
 

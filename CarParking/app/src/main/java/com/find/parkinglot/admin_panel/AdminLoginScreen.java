@@ -1,4 +1,4 @@
-package com.example.carparking.admin_panel;
+package com.find.parkinglot.admin_panel;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.carparking.HomeScreen;
-import com.example.carparking.R;
+import com.find.parkinglot.HomeScreen;
+import com.find.parkinglot.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -1,9 +1,7 @@
-package com.example.carparking;
+package com.find.parkinglot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;

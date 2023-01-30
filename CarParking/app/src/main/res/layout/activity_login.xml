@@ -9,16 +9,12 @@
     android:orientation="vertical"
     tools:context=".LoginScreen">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@android:color/transparent"/>
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/lambo"
         android:layout_gravity="center" />
 
@@ -37,7 +33,7 @@
         android:layout_height="match_parent">
         <fragment
             android:id="@+id/loginSignupFragmentID"
-            android:name="com.example.carparking.LoginFragment"
+            android:name="com.find.parkinglot.LoginFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

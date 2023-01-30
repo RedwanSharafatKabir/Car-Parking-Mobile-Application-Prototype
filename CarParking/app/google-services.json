@@ -8,26 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:852806004240:android:bbcc3f408078e14b0ee495",
+        "mobilesdk_app_id": "1:852806004240:android:b85f29c37ffd8fb10ee495",
         "android_client_info": {
-          "package_name": "com.example.carparking"
+          "package_name": "com.find.parkinglot"
         }
       },
       "oauth_client": [
         {
-          "client_id": "852806004240-qdh7b6t1daus053t0gliiseia83rfoi9.apps.googleusercontent.com",
+          "client_id": "852806004240-khg2pvafdd3bho2i4i88j1snbfhgnl4b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.carparking",
-            "certificate_hash": "fab83aa7788ae07724c561e862f53f36579441fa"
-          }
-        },
-        {
-          "client_id": "852806004240-vtnj0glsmiujcbeta9qscbbmpiu7uaf2.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.carparking",
-            "certificate_hash": "dd826897d1d78cfe76a5bf0309962d36ca84227a"
+            "package_name": "com.find.parkinglot",
+            "certificate_hash": "89684ac75846434ab782ba2a6b96533dbcc5fbb7"
           }
         },
         {
@@ -37,7 +29,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCLWxhm-vNKqb_1ekmKbFBu8m6hLmCchNw"
+          "current_key": "AIzaSyB7bBoXfqD19bAZ4geQrC9OPgA-bZkQ5wI"
         }
       ],
       "services": {

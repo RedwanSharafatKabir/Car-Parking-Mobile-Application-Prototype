@@ -51,7 +51,7 @@
 
             <fragment
                 android:id="@+id/fragmentID"
-                android:name="com.example.carparking.HomeFragment"
+                android:name="com.find.parkinglot.HomeFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
