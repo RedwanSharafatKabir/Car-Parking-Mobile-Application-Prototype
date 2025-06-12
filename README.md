@@ -49,17 +49,11 @@ An android application which performs to find nearby parking lots of a car drive
 - - - -
 <br>
 
-* Navigation drawer and Map - 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ![navigation](https://user-images.githubusercontent.com/37416018/101273213-94385b00-37bd-11eb-87f7-ce7137d9774c.JPG)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![map](https://user-images.githubusercontent.com/37416018/101273214-94385b00-37bd-11eb-8972-aed73038958d.JPG)
-- - - -
-<br>
-
-* Reserved parking lot record and payment system - 
+* Live Map & Reserved parking lot record - 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ![record_payment](https://user-images.githubusercontent.com/37416018/101273217-96021e80-37bd-11eb-8302-12bc91a574a0.JPG)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![map](https://user-images.githubusercontent.com/37416018/101273214-94385b00-37bd-11eb-8972-aed73038958d.JPG)
 - - - -
 <br>
 
